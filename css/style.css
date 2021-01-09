@@ -122,24 +122,58 @@ hr {
 
 .button {
     border: none;
-    padding: 10px;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    border-radius: 37px;
     font-family: 'Poppins', sans-serif;
-    color: #FFF;
-    font-size: 16px;
-    font-weight: 5px;
+    outline: none;
 }
 
-.btn1 {
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+  .btn1 {
     background-color: #A64AC9;
     position: fixed;
     bottom: 25px;
     right: 70px;
     padding-left: 50;
     padding-right: 50px;
+    font-size: 16px;
+    font-weight: 5px;
+    border-radius: 37px;
+    color: #FFF;
+    padding: 10px;
+}
+
+.btnView {
+    background-color: #FCCD05;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .btnCancel {
@@ -153,13 +187,13 @@ hr {
 .sorting {
     left: 500;
     border-radius: 5px;
-    width: 700px;
+    width: 750px;
     height: 76px;
     background-color: #FFF;
     box-shadow: 0 4px 2px -2px rgb(131, 128, 128);
     position: fixed;
     top: 72;
-    left: 460;
+    left: 400;
     right: 500;
     display: inline-block;
 }
@@ -186,6 +220,79 @@ hr {
     display:inline;
     padding: 10px;
 }
+
+.card-quiz {
+    width: 323px;
+    height: 180px;
+    background-color: #fff;
+    margin-top: 119px;
+    margin-left: 117px;
+    box-shadow: 0 4px 5px -2px rgb(131, 128, 128);
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 27px;
+    padding-bottom: 27px;
+    display: inline-block;
+}
+
+.card-quiz .quiz-name{
+    display: inline-block;
+}
+
+.card-quiz .quiz-name p{
+    font-weight: bold;
+    display: inline;
+}
+
+.card-quiz .quiz-name i{
+  float: left;
+  cursor: pointer;
+}
+
+.card-desc  p{
+    color: #9AA2B9;
+    font-size: 15px;
+}
+
+.quiz-code {
+    width: 240px;
+    height: 25px;
+    background-color: #959595;
+    border-radius: 12px;
+    padding-left: 20px;
+    margin-top: 15px;
+    float: left;
+}
+
+.quiz-code  p{
+    color: #FFF;
+    font-size: 15px;
+}
+
+.quiz-copy {
+    width:24px;
+    height: 24px;
+    border-radius: 50px;
+    background-color: #959595;
+    padding: 5px;
+    margin-top: 15px;
+    float: right;
+}
+
+.card-quiz .quiz-copy i{
+   color: #FFF;
+   font-size: 14px;
+   float: right;
+   text-align: center;
+}
+
+.card-quiz i {
+    padding-left: 280px;
+}
+
+
+
 
 
 
