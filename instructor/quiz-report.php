@@ -54,7 +54,12 @@
             </div>
         </header>
         <main>
-            
+            <div class="report-box">
+                <div class="heading">
+                    Quiz Analysis Report
+                </div>
+                div.
+            </div>
         </main>
     </div>
 </body>
