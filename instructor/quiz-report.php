@@ -56,9 +56,59 @@
         <main>
             <div class="report-box">
                 <div class="heading">
-                    Quiz Analysis Report
+                    Quiz Analysis Report: title
                 </div>
-                div.
+                <div class="analysis">
+                    <div class="boxes">
+                        93.75%
+                        <p>Passing Rate</p>
+                    </div>
+                    <div class="boxes">
+                        test
+                        <p>Pass Count</p>
+                    </div>
+                    <div class="boxes">
+                        test
+                        <p>Average Attempt per Class</p>
+                    </div>
+                    <div class="boxes">
+                        test
+                        <p>Failing Rate</p>
+                    </div>
+                    <div class="boxes">
+                        test
+                        <p>Fail Count</p>
+                    </div>
+                    <div class="boxes">
+                        test
+                        <p>Average Attempt per Fail</p>
+                    </div>
+                </div>
+                <div class="table-container">
+                <table>
+                    <tr>
+                        <th>No.</th><th>Student name</th><th>Total correct</th><th>Total wrong</th><th>Mark(%)</th><th>Pass/Fail</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Database</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="quiz-report.php"><button class="button btnPass">Pass</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Human-Computer Interaction</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="quiz-report.php"><button class="button btnFail">Fail</button></a></td>
+                    </tr>
+                   
+                </table>
+                </div>
             </div>
         </main>
     </div>

@@ -4,6 +4,7 @@
     margin-top: 78px;
     background: #f7f7f7;
     min-height: 90vh;
+    padding-bottom: 130px;
 }
 
 .quiz-details {
@@ -47,7 +48,7 @@ input[type=text]:focus {
 
 .question-box {
     width: 1215px;
-    height: 190px;
+    min-height: 190px;
     background-color: #FFF;
     margin-left: 65px;
     margin-top: 35px;
@@ -88,14 +89,19 @@ input[type=text]:focus {
     margin-top: 15px; 
 }
 
+.question-box p {
+    padding: 30px;
+    color: #939BB4;
+}
+
 .add-question p {
     font-size: 16px;
     color: #3CCFCF;
     font-weight: bold;
     padding-left: 65px;
     padding-top: 20px;
-    padding-bottom: 70px;
     cursor: pointer;
+    width: 190px;
 }
 
 .cntdelegate a{
@@ -103,6 +109,7 @@ input[type=text]:focus {
     padding-top: 10px;
     padding-right: 80px;
     color: red;
+    cursor: pointer;
 }
 
 .box{
@@ -155,15 +162,15 @@ select {
     right: 0;
   }
 
-  .box{
-    color: #fff;
-    padding: 20px;
-    display: none;
-    margin-top: 20px;
- }
-.fill input[type=text]{ width: 200px; }
-.mcq input[type=text]{ width: 200px; }
+  .answer-container  {
+        padding: 20px;
+        padding-left: 90px;
+        display: none;
+        margin-top: 20px;
+        max-height: 100%;
+    }
 
+  .answer-container input[type=text]{ max-width: 100%; }
 
 
 
