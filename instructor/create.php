@@ -1,3 +1,4 @@
+<?php include("../config/db_connect.php"); ?>
 
 <html>
 <head>
@@ -12,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery.repeater@1.2.1/jquery.repeater.min.js"></script>
 </head>
 
-<body>
+<body onload="myFunction()">
     <header>
         <div class="website-name">
             <h3>
@@ -21,28 +22,28 @@
         </div>
     </header>
    <div class="main">
-        <form class="repeater">
+        <form class="repeater" method="POST" action="../database/mutation/quiz/createquiz.php">
             <div class="quiz-details">
                 <p class="header">Create a new quiz</p>
                 <table>
                     <tr>
                         <td>
                           <p class="title">TITLE</p>
-                          <input type="text" name="title" placeholder="Enter a title, eg: “Mathematics Exercise 1: Algebra”">
+                          <input type="text" name="quizName" placeholder="Enter a title, eg: “Mathematics Exercise 1: Algebra”" required>
                         </td>
                         <td class="right">
                             <p class="title">START DATE AND TIME</p>
-                            <input type="datetime-local" name="start">
+                            <input type="datetime-local" name="openDate" required>
                         </td>
                     </tr>
                     <tr>
                         <td>
                            <p class="title">DESCRIPTION</p>
-                           <input type="text" name="description" placeholder="Add a description...">
+                           <input type="text" name="description" placeholder="Add a description..." required>
                         </td>
                         <td class="right">
                             <p class="title">END DATE AND TIME</p>
-                             <input type="datetime-local" name="end">
+                             <input type="datetime-local" name="closeDate" required>
                         </td>
                     </tr>
                 </table>
@@ -51,7 +52,7 @@
             <div data-repeater-list="group-a" class="cntdelegate">
                 <div data-repeater-item class="repeater-container">
                     <div class="question-box">
-                        <input type="text" id="questName" name="questName" placeholder="Add a question" onFocus="if(this.value=='questName'){this.select()};" onClick="if(this.value=='questName'){this.select()};">
+                        <input type="text" id="questName" name="questName" placeholder="Add a question" onFocus="if(this.value=='questName'){this.select()};" onClick="if(this.value=='questName'){this.select()};" required>
                         <div class="action">
                             <select onchange="questionType(this)">
                                 <option value="" disabled selected>Select question type</option>
@@ -77,26 +78,21 @@
                     </div>
                 </div>
                
-                <!-- <a href="javascript:;" onClick="this.parentNode.parentNode.removeChild(this.parentNode);">Remove</a> -->
-                <a data-repeater-delete >Remove </a>
-
+                <a data-repeater-delete>Remove </a>
                 <div class="clear"></div>
             </div>
         
             <span id="writeroot"></span>
-            <button  type="submit" class="button btn1" name="submit" id="submit" value="submit" alt="Send" title="Send"><span>Create</span></button>
+            <button  type="submit" class="button btn1" name="submit"><span>Create</span></button>
             <div class="clear"></div>
         </form>
 
         <div class="icon-bar" data-repeater-create>
         <p>+</p>
         </div>
-
-        <div class="add-question">
-            
-        </div>
-
     </div>
+    
+    <script>function myFunction() {alert("Click on the bouncing button to add a question!");}</script>
     <script src="../js/modal.js"></script>
     <script src="../js/create.js"></script>  
 </body>

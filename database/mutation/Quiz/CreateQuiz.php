@@ -1,13 +1,19 @@
 <?php
+    include("../../../config/db_connect.php");
     session_start();
     $quizName = $openDate = $closeDate = $quizStatus = '';
-    $errors = array('quizName'=>'','openDate'=>'','closeDate'=>'','quizStatus'=>'');
+    $errors = array('quizName'=>'','openDate'=>'','closeDate'=>'');
 
     if(isset($_POST['submit'])){
         //instructorID
-        $instructorID = $_SESSION['instructorID'];
+        $instructorID = 2;
+        $descriptions = $_POST['description'];
+        $quizName = $_POST['quizName'];
+        $openDate = date('Y-m-d', strtotime($_POST['openDate']));
+        $closeDate = date('Y-m-d', strtotime($_POST['closeDate']));
 
-        //quizName
+
+        /*quizName
         if(empty($_POST['quizName'])){
             $errors['quizName'] = 'An Quiz Name is required <br />';
         } else {
@@ -37,24 +43,24 @@
             } else {
                 $quizStatus = 1;
             }
-        }
+        }*/
 
         if(array_filter($errors)){
 
         } else {
-            $instructorID = mysqli_real_escape_string($conn, $_SESSION['instructorID']);
+            $instructorID = mysqli_real_escape_string($conn, '2');
             $quizName = mysqli_real_escape_string($conn, $_POST['quizName']);
             $openDate = mysqli_real_escape_string($conn, date('Y-m-d', strtotime(str_replace('-','/',$_POST['openDate']))));
             $closeDate = mysqli_real_escape_string($conn, date('Y-m-d', strtotime(str_replace('-','/',$_POST['closeDate']))));
             $quizStatus = mysqli_real_escape_string($conn, $quizStatus);
 
-            $sql = "INSERT INTO quiz(instructorID,quizName,openDate,closeDate,quizStatus)
-            VALUES ('$instructorID', '$quizName','$openDate','$closeDate','$quizStatus')";
+            $sql = "INSERT INTO quiz(instructorID,quizName,dateOpen,dateClose,descriptions)
+            VALUES ('$instructorID', '$quizName','$openDate','$closeDate','$descriptions')";
 
             if(mysqli_query($conn, $sql)){
                 $quizID = mysqli_insert_id($conn);
                 echo "New record created successfully. Last inserted ID is: " . $quizID; //TODO: Check balik
-                header('Location: index.php');
+                header('Location: ../../../instructor/create.php');
             } else {
                 echo 'query error: ' . mysqli_error($conn);
             }

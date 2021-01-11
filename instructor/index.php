@@ -1,3 +1,8 @@
+<?php 
+include("../config/db_connect.php");
+include("../database/mutation/quiz/viewquiz.php"); 
+?>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -67,16 +72,21 @@
                     <input type="text">
                 </div>
             </div>
-
+            <div class="card-container">
+            <?php if($result-> num_rows >0) {
+                  $i = 1;
+                  while ($row = $result-> fetch_assoc()) {
+            ?>
             <div class="card-quiz">
                 <div class="quiz-name">
-                    <p>First Week Quiz</p>
-                    <i class="fas fa-trash-alt left" id="myBtn" class="left"></i>
-                    <a href="edit.php"><i class="fas fa-edit"></i></a>
+                    <p><?php echo $row["quizName"]?></p>
+                    <a href="../database/mutation/quiz/deletequiz.php?id=<?php echo $row["quizID"]; ?>" class="left"><i class="fas fa-trash-alt" onClick="return confirm('Are you sure to remove this quiz?')" aria-hidden="true"></i></a>
+                    <div class="left-left"><a href="edit.php"><i class="fas fa-edit"></i></a></div>
                 </div>
+                
                            
                 <div class="card-desc">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <p><?php echo $row["descriptions"]?></p>
                 </div>
 
                 <div class="quiz-code">
@@ -86,6 +96,9 @@
                 <div class="quiz-copy">
                     <i class="far fa-copy"></i>
                 </div>
+            </div>
+            <?php }
+            } ?>
             </div>
            <a href="create.php"><button class="button btn1"><span>Create</span></button></a>
 
@@ -98,12 +111,14 @@
                     <p>You are about to delete --quiz name--.</p>
 
                     <div class="action-btn">
-                        <button class="button btnDelete">Delete</button>
+                        <a href="../database/mutation/quiz/deletequiz.php?id=<?php echo $row["quizID"]; ?>"><button class="button btnDelete">Delete</button></a>
                     </div>
                 </div>
-              </div>
+             </div>
         </main>
     </div>
+
     <script src="../js/modal.js"></script>
-</body>
+    </body>
+
 </html>
