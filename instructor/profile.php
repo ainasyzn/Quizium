@@ -4,7 +4,10 @@
     <title>Dashboard</title>
     <!--icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/v4-shims.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/profile.css">
 </head>
 
 <body>
@@ -18,18 +21,18 @@
         <div class="sidebar-menu">
             <hr>
             <ul>
-                <li class="active">
-                    <a href="">
+                <li>
+                    <a href="index.php">
                         <span>Home</span>
                     </a>
                 </li>
-                <li>
-                    <a href="">
+                <li class="active">
+                    <a href="#" >
                         <span>My Profile</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="report.php">
                         <span>Report</span>
                     </a>
                 </li>
@@ -50,23 +53,10 @@
                 </h3>
             </div>
         </header>
-
         <main>
-            <div class="sorting">
-                <div class="quizTot">
-                    Quiz(N)
-                </div>
-                <div class="sortBy">
-                    <p>Sort By:</p>
-                    <select name="sortBy">
-                        <option value="recent">Most recent</option>
-                        <option value="recent">Oldest</option>
-                    </select>
-                    <p>Search quiz:</p>
-                    <input type="text">
-                </div>
+            <div class="profle-container">
+
             </div>
-           <button class="button btn1">Create</button>
         </main>
     </div>
 </body>
