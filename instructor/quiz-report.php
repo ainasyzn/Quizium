@@ -22,12 +22,12 @@
             <hr>
             <ul>
                 <li>
-                    <a href="index.html">
+                    <a href="index.php">
                         <span>Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="profile.html" >
+                    <a href="profile.php" >
                         <span>My Profile</span>
                     </a>
                 </li>
@@ -95,8 +95,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><a href="quiz-report.php"><button class="button btnPass">Pass</button></a>
-                        </td>
+                        <td><button class="button btnPass">Pass</button></td>
                     </tr>
                     <tr>
                         <td>2</td>
@@ -104,7 +103,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><a href="quiz-report.php"><button class="button btnFail">Fail</button></a></td>
+                        <td><button class="button btnFail">Fail</button></td>
                     </tr>
                    
                 </table>

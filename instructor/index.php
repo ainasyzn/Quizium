@@ -5,9 +5,8 @@
     <!--icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/v4-shims.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/report.css">
+    <link rel="stylesheet" href="../css/modal.css">
 </head>
 
 <body>
@@ -21,18 +20,18 @@
         <div class="sidebar-menu">
             <hr>
             <ul>
-                <li>
-                    <a href="index.html">
+                <li class="active">
+                    <a href="#">
                         <span>Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="profile.html" >
+                    <a href="profile.php">
                         <span>My Profile</span>
                     </a>
                 </li>
-                <li class="active">
-                    <a href="#">
+                <li>
+                    <a href="report.php">
                         <span>Report</span>
                     </a>
                 </li>
@@ -69,32 +68,42 @@
                 </div>
             </div>
 
-            <div class="quiz-list">
-                <table>
-                    <tr>
-                        <th>No.</th><th>Quiz name</th><th>Start date</th><th>End date</th><th>Class average</th><th>Action</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Database</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><a href="quiz-report.php"><button class="button btnView">View</button></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Human-Computer Interaction</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><a href="quiz-report.php"><button class="button btnView">View</button></a></td>
-                    </tr>
-                   
-                </table>
+            <div class="card-quiz">
+                <div class="quiz-name">
+                    <p>First Week Quiz</p>
+                    <i class="fas fa-trash-alt left" id="myBtn" class="left"></i>
+                    <a href="edit.php"><i class="fas fa-edit"></i></a>
+                </div>
+                           
+                <div class="card-desc">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+
+                <div class="quiz-code">
+                    <p>WJK-YKE-SOQ</p>
+                </div>
+
+                <div class="quiz-copy">
+                    <i class="far fa-copy"></i>
+                </div>
             </div>
+           <a href="create.php"><button class="button btn1"><span>Create</span></button></a>
+
+             <!-- modal -->
+              <div class="modal" id="myModal">
+                <!-- modal content-->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h4>Delete Quiz</h4>
+                    <p>You are about to delete --quiz name--.</p>
+
+                    <div class="action-btn">
+                        <button class="button btnDelete">Delete</button>
+                    </div>
+                </div>
+              </div>
         </main>
     </div>
+    <script src="../js/modal.js"></script>
 </body>
 </html>

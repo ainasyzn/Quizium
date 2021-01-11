@@ -172,5 +172,57 @@ select {
 
   .answer-container input[type=text]{ max-width: 100%; }
 
+  .right {
+      padding-left: 200px;
+  }
+
+  input[type=datetime-local] {
+      border: none;
+      padding: 10px;
+      border-bottom: 2px solid #303545;
+      outline: none;
+      font-size: 13px;
+  }
+
+input[type=datetime-local]:focus {
+    outline: none !important;
+    border-bottom:3px solid #FFCD1F;
+}
+
+.icon-bar {
+    position: fixed;
+    top: 60%;
+    border-radius: 50%;
+    background-color: #3CCFCF;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #FFF;
+    padding: 5px;
+    margin: 20px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    cursor: pointer;
+    -webkit-animation: bounce .8s infinite alternate;
+    -moz-animation: bounce .8s infinite alternate;
+    animation: bounce .8s infinite alternate;
+  }
+
+    @-webkit-keyframes bounce {
+    to { -webkit-transform: scale(1.0); }
+    }
+    @-moz-keyframes bounce {
+    to { -moz-transform: scale(1.0); }
+    }
+    @keyframes bounce {
+    to { transform: scale(1.0); }
+    }
+  
+  
+  .icon-bar:hover {
+    background-color: yellowgreen;
+  }
+
 
 

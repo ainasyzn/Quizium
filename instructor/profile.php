@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/v4-shims.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/profile.css">
 </head>
 
 <body>
@@ -21,7 +22,7 @@
             <hr>
             <ul>
                 <li>
-                    <a href="index.html">
+                    <a href="index.php">
                         <span>Home</span>
                     </a>
                 </li>
@@ -31,7 +32,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="report.html">
+                    <a href="report.php">
                         <span>Report</span>
                     </a>
                 </li>
@@ -53,6 +54,9 @@
             </div>
         </header>
         <main>
+            <div class="profle-container">
+
+            </div>
         </main>
     </div>
 </body>
