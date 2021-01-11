@@ -1,0 +1,44 @@
+.content{
+    margin-left:270px;
+    margin-top: 80px;
+    background-color: #E5E5E5;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.box-1{
+    background-color: white;
+    width: 700px;
+    color: #000000;
+    margin-top: 5%;
+    padding-top:3%;
+    padding-left:5%;
+    padding-bottom: 2%;
+    border-radius: 21.5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.box1-content{
+    display: flex;
+}
+
+.box1-content ul{
+    margin-left: 1%;
+
+}
+.box1-content li{
+    list-style-type:circle;
+    padding-top: 4%;
+}
+
+.sideimg
+{
+    margin-top: -4%;
+}
+
+.listing{
+    width: 270px;
+    margin-right: 10%;
+}
+
