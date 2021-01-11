@@ -1,7 +1,8 @@
 <?php
     session_start();
-    $quizName = $openDate = $closeDate = $quizStatus = '';
-    $errors = array('quizName'=>'','openDate'=>'','closeDate'=>'','quizStatus'=>'');
+    $quizName = $openDate = $closeDate = $quizDescription = $quizCode = '';
+    $errors = array('quizName'=>'','openDate'=>'',
+    'closeDate'=>'','quizDescription'=>'','quizCode'=>'');
 
     if(isset($_POST['submit'])){
         //instructorID
@@ -22,21 +23,24 @@
         }
 
         //close date
-        if(empty($_POST['closeDate'])){
+        if(empty($_POST['closeDate'])) {
             $errors['closeDate'] = 'An Close Date is required <br />';
         } else {
             $closeDate = date('Y-m-d', strtotime($_POST['closeDate']));
         }
 
-        //quizStatus
-        if(empty($_POST['quizStatus'])){
-            $errors['quizStatus'] = 'An Quiz Status is required <br />';
+        //quizDescription
+        if(empty($_POST['quizDescription'])) {
+            $errors['quizDescription'] = 'An Quiz Status is required <br />';
         } else {
-            if($_POST['quizStatus'] == "open"){
-                $quizStatus = 0;
-            } else {
-                $quizStatus = 1;
-            }
+            $quizDescription = $_POST['quizDescription'];
+        }
+
+        //quizCode
+        if(empty($_POST['quizCode'])) {
+            $errors['quizCode'] = 'An Quiz Status is required <br />';
+        } else {
+            $quizCode = $_POST['quizCode'];
         }
 
         if(array_filter($errors)){
@@ -46,11 +50,13 @@
             $quizName = mysqli_real_escape_string($conn, $_POST['quizName']);
             $openDate = mysqli_real_escape_string($conn, date('Y-m-d', strtotime(str_replace('-','/',$_POST['openDate']))));
             $closeDate = mysqli_real_escape_string($conn, date('Y-m-d', strtotime(str_replace('-','/',$_POST['closeDate']))));
-            $quizStatus = mysqli_real_escape_string($conn, $quizStatus);
+            $quizDescription = mysqli_real_escape_string($conn, $quizDescription);
+            $quizCode = mysqli_real_escape_string($conn, $quizCode);
 
             $sql = "UPDATE quiz
             SET instructorID='$instructorID', quizName='$quizName', 
-            openDate='$openDate', closeDate='$closeDate', quizStatus='$quizStatus'
+            openDate='$openDate', closeDate='$closeDate', 
+            quizDescription='$quizDescription', quizCode='$quizCode'
             WHERE quiz.quizID = $quizID ";
 
             if(mysqli_query($conn, $sql)){
