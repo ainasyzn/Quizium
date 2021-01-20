@@ -1,13 +1,13 @@
 <?php
 
-    if(isset($_GET['quizId'])){
-        $id = mysqli_real_escape_string($conn, $_GET['quizId']);
+    if(isset($_GET['quizCode'])){
+        $quizCode = mysqli_real_escape_string($conn, $_GET['quizCode']);
 
         //query for one quiz
         $quiz = "SELECT quiz.*, quizquestion.*, quizanswer.* FROM quiz
         INNER JOIN quizquestion ON quiz.quizID = quizquestion.quizID
         INNER JOIN quizanswer ON quizquestion.quizQuestionID = quizanswer.quizQuestionID
-        WHERE quiz.quizID = $id";
+        WHERE quiz.quizCode = $quizCode";
 
         $instructor = "SELECT instructor.* FROM quiz
         INNER JOIN instructor ON quiz.InstructorID = instructor.instructorID

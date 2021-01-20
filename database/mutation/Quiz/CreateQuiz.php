@@ -1,8 +1,9 @@
 <?php
     include("../../../config/db_connect.php");
     session_start();
-    $quizName = $openDate = $closeDate = $quizStatus = '';
-    $errors = array('quizName'=>'','openDate'=>'','closeDate'=>'');
+    $quizName = $openDate = $closeDate = $quizCode = $quizDescription = '';
+    $errors = array('quizName'=>'','openDate'=>'',
+    'closeDate'=>'','quizCode'=>'','quizDescription'=>'');
 
     if(isset($_POST['submit'])){
         //instructorID
@@ -34,16 +35,19 @@
             $closeDate = date('Y-m-d', strtotime($_POST['closeDate']));
         }
 
-        //quizStatus
-        if(empty($_POST['quizStatus'])){
-            $errors['quizStatus'] = 'An Quiz Status is required <br />';
+        //quizCode
+        if(empty($_POST['quizCode'])){
+            $errors['quizCode'] = 'An Quiz Status is required <br />';
         } else {
-            if($_POST['quizStatus'] == "open"){
-                $quizStatus = 0;
-            } else {
-                $quizStatus = 1;
-            }
-        }*/
+            $quizCode = $_POST['quizCode'];
+        }
+
+        //quizDescription
+        if(empty($_POST['quizDescription'])){
+            $errors['quizDescription'] = 'An Quiz Status is required <br />';
+        } else {
+            $quizDescription = $_POST['quizDescription'];
+        }
 
         if(array_filter($errors)){
 
@@ -52,10 +56,11 @@
             $quizName = mysqli_real_escape_string($conn, $_POST['quizName']);
             $openDate = mysqli_real_escape_string($conn, date('Y-m-d', strtotime(str_replace('-','/',$_POST['openDate']))));
             $closeDate = mysqli_real_escape_string($conn, date('Y-m-d', strtotime(str_replace('-','/',$_POST['closeDate']))));
-            $quizStatus = mysqli_real_escape_string($conn, $quizStatus);
+            $quizCode = mysqli_real_escape_string($conn, $quizCode);
+            $quizDescription = mysqli_real_escape_string($conn, $quizDescription);
 
-            $sql = "INSERT INTO quiz(instructorID,quizName,dateOpen,dateClose,descriptions)
-            VALUES ('$instructorID', '$quizName','$openDate','$closeDate','$descriptions')";
+            $sql = "INSERT INTO quiz(instructorID,quizName,openDate,closeDate,quizCode,quizDescription)
+            VALUES ('$instructorID', '$quizName','$openDate','$closeDate','$quizCode','$quizDescription')";
 
             if(mysqli_query($conn, $sql)){
                 $quizID = mysqli_insert_id($conn);
