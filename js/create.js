@@ -13,6 +13,30 @@ $(document).ready(function () {
         });
     }
 
+    $('#quiz_form').on('submit', function(event){
+        var count_data = 0;
+        $('.quizName').each(function(){
+            count_data = count_data + 1;
+        });
+        if(count_data > 0)
+        {
+            var quiz_form = $(this).serialize();
+            $.ajax({
+                url: "../database/mutation/quiz/createquiz.php",
+                method: "POST",
+                data: quiz_form,
+                success:function(data)
+                {
+                    window.location = ("../instructor/index.php");
+                    window.alert("Quiz created successfully!");
+                }
+            })
+        }
+        else {
+            window.alert("Please insert atleast one question!");
+        }
+    });
+
     $('.repeater').repeater({
         // (Optional)
         // start with an empty list of repeaters. Set your first (and only)

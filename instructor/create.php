@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery.repeater@1.2.1/jquery.repeater.min.js"></script>
 </head>
 
-<body onload="myFunction()">
+<body">
     <header>
         <div class="website-name">
             <h3>
@@ -22,14 +22,14 @@
         </div>
     </header>
    <div class="main">
-        <form class="repeater" method="POST" action="../database/mutation/quiz/createquiz.php">
+        <form class="repeater" method="POST" id="quiz_form">
             <div class="quiz-details">
                 <p class="header">Create a new quiz</p>
                 <table>
                     <tr>
                         <td>
                           <p class="title">TITLE</p>
-                          <input type="text" name="quizName" placeholder="Enter a title, eg: “Mathematics Exercise 1: Algebra”" required>
+                          <input type="text" name="quizName" class="quizName" placeholder="Enter a title, eg: “Mathematics Exercise 1: Algebra”" required>
                         </td>
                         <td class="right">
                             <p class="title">START DATE AND TIME</p>
@@ -49,10 +49,10 @@
                 </table>
             </div>
 
-            <div data-repeater-list="group-a" class="cntdelegate">
+            <div data-repeater-list="group-a" class="cntdelegate" id="quiz-question">
                 <div data-repeater-item class="repeater-container">
                     <div class="question-box">
-                        <input type="text" id="questName" name="questName" placeholder="Add a question" onFocus="if(this.value=='questName'){this.select()};" onClick="if(this.value=='questName'){this.select()};" required>
+                        <input type="text" id="questName" name="questName" placeholder="Add a question" required>
                         <div class="action">
                             <select onchange="questionType(this)">
                                 <option value="" disabled selected>Select question type</option>
@@ -64,17 +64,17 @@
                     <div class="mcq answer-container">
                         Enter answer choices and select the correct answer:<br>
                         a. &nbsp; <input type="radio" name="ansrad">
-                                    <input type="text" name="radio1[]" placeholder="Enter answer"><br>
+                                    <input type="text" name="radio1" id="radio1" placeholder="Enter answer"><br>
                         b. &nbsp; <input type="radio" name="ansrad">
-                                    <input type="text" name="radio2[]" placeholder="Enter answer"><br>
+                                    <input type="text" name="radio2" id="radio2" placeholder="Enter answer"><br>
                         c. &nbsp; <input type="radio" name="ansrad">
-                                    <input type="text" name="radio3[]" placeholder="Enter answer">
+                                    <input type="text" name="radio3" id="radio3" placeholder="Enter answer">
                     </div>
                     <div class="text answer-container">
                         Enter 3 possible correct(only) answers:<br>
-                        1. &nbsp;<input type="text" name="text1[]" placeholder="Enter correct answer 1"><br>
-                        2. &nbsp;<input type="text" name="text2[]" placeholder="Enter correct answer 2"><br>
-                        3. &nbsp;<input type="text" name="text3[]" placeholder="Enter correct answer 3">
+                        1. &nbsp;<input type="text" name="text1" id="text1" placeholder="Enter correct answer 1"><br>
+                        2. &nbsp;<input type="text" name="text2" id="text2" placeholder="Enter correct answer 2"><br>
+                        3. &nbsp;<input type="text" name="text3" id="text3" placeholder="Enter correct answer 3">
                     </div>
                 </div>
                
@@ -83,7 +83,7 @@
             </div>
         
             <span id="writeroot"></span>
-            <button  type="submit" class="button btn1" name="submit"><span>Create</span></button>
+            <button  type="submit" class="button btn1" id="submit" name="submit"><span>Create</span></button>
             <div class="clear"></div>
         </form>
 
@@ -92,7 +92,6 @@
         </div>
     </div>
     
-    <script>function myFunction() {alert("Click on the bouncing button to add a question!");}</script>
     <script src="../js/modal.js"></script>
     <script src="../js/create.js"></script>  
 </body>

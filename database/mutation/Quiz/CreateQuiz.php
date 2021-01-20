@@ -5,49 +5,17 @@
     $errors = array('quizName'=>'','openDate'=>'',
     'closeDate'=>'','quizCode'=>'','quizDescription'=>'');
 
-    if(isset($_POST['submit'])){
+    //the idea is, once quiz dah create, guna the id to insert quizquestions in this same file
+
         //instructorID
         $instructorID = 2;
-        $descriptions = $_POST['description'];
+        //quizCode dummy
+        $quizCode = "WYG-GHT-WXT";
+        $quizDescription = $_POST['description'];
         $quizName = $_POST['quizName'];
         $openDate = date('Y-m-d', strtotime($_POST['openDate']));
         $closeDate = date('Y-m-d', strtotime($_POST['closeDate']));
-
-
-        /*quizName
-        if(empty($_POST['quizName'])){
-            $errors['quizName'] = 'An Quiz Name is required <br />';
-        } else {
-            $quizName = $_POST['quizName'];
-        }
-
-        //open date
-        if(empty($_POST['openDate'])){
-            $errors['openDate'] = 'An Open Date is required <br />';
-        } else {
-            $openDate = date('Y-m-d', strtotime($_POST['openDate']));
-        }
-
-        //close date
-        if(empty($_POST['closeDate'])){
-            $errors['closeDate'] = 'An Close Date is required <br />';
-        } else {
-            $closeDate = date('Y-m-d', strtotime($_POST['closeDate']));
-        }
-
-        //quizCode
-        if(empty($_POST['quizCode'])){
-            $errors['quizCode'] = 'An Quiz Status is required <br />';
-        } else {
-            $quizCode = $_POST['quizCode'];
-        }
-
-        //quizDescription
-        if(empty($_POST['quizDescription'])){
-            $errors['quizDescription'] = 'An Quiz Status is required <br />';
-        } else {
-            $quizDescription = $_POST['quizDescription'];
-        }
+        //radio1-3, text1-3 from create.php
 
         if(array_filter($errors)){
 
@@ -56,20 +24,21 @@
             $quizName = mysqli_real_escape_string($conn, $_POST['quizName']);
             $openDate = mysqli_real_escape_string($conn, date('Y-m-d', strtotime(str_replace('-','/',$_POST['openDate']))));
             $closeDate = mysqli_real_escape_string($conn, date('Y-m-d', strtotime(str_replace('-','/',$_POST['closeDate']))));
-            $quizCode = mysqli_real_escape_string($conn, $quizCode);
-            $quizDescription = mysqli_real_escape_string($conn, $quizDescription);
+            $quizStatus = mysqli_real_escape_string($conn, $quizStatus);
 
-            $sql = "INSERT INTO quiz(instructorID,quizName,openDate,closeDate,quizCode,quizDescription)
-            VALUES ('$instructorID', '$quizName','$openDate','$closeDate','$quizCode','$quizDescription')";
+            $sql = "INSERT INTO quiz(instructorID,quizName,dateOpen,dateClose,quizDescription,quizCode)
+            VALUES ('$instructorID', '$quizName','$openDate','$closeDate','$quizDescription', 'quizCode')";
+            
 
-            if(mysqli_query($conn, $sql)){
+            if($conn->query($sql) === TRUE){
+                //tak jadi
                 $quizID = mysqli_insert_id($conn);
                 echo "New record created successfully. Last inserted ID is: " . $quizID; //TODO: Check balik
-                header('Location: ../../../instructor/create.php');
+                header('Location: ../../../instructor/index.php');
             } else {
                 echo 'query error: ' . mysqli_error($conn);
             }
         }
-    } // End of POST check
+    // End of POST check
 
 ?>
