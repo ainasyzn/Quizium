@@ -1,4 +1,7 @@
 <?php
+    //DATABASE
+    include ("../../config/db_connect.php");
+    
     $matrix = $password = '';
     $errors = array('matrix'=>'','password'=>'');
 
@@ -7,7 +10,7 @@
         if(empty($_POST['matrix'])){
             $errors['matrix'] = 'Matrix Number is required <br />';
         } else {
-            $matrix = $_POST['matrix'];
+            $matrix = $_POST['matrix']; 
             if(!preg_match('/^[0-9]*$/', $matrix)){
                 $errors['matrix'] = 'Matrix Number must be numbers only';
             }
@@ -26,18 +29,19 @@
             $matrix = mysqli_real_escape_string($conn, $_POST['matrix']);
             $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-            $sql = "SELECT student.* FROM student
-            WHERE matrixNum = $matrix
-            AND password = $password";
+            $sql = "SELECT * FROM `student`
+            WHERE `matrixNum` = '$matrix' AND `spassword` = '$password'";
 
             if(mysqli_query($conn, $sql)){
                 $result = mysqli_query($conn, $sql);
                 $userResult = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
                 if($userResult != null){
-                    header('Location: index.php');
+                    echo "betul la tu";
+                    //header("Location: ./StudentProfile.php"); //correct
                 } else {
-                    echo 'Incorrect Matrix Number or Password';
+                    echo "Incorrect Matrix Number or Password";
+                    //header("Location: welcome.html");    //false
                 }
 
                 //free result

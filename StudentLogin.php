@@ -19,21 +19,21 @@
     </header>
     <div class="container">
         <div class="inner-box">
-            <h1>Sign up here, <p style="text-decoration: underline;">Students!</p></h1>
+            <h1>Welcome back, <p style="text-decoration: underline;">Students!</p></h1>
             <div class="subtext">
-                let the fun begin
+                sign in to continue
             </div>
-            <form>
-                <label>Student ID</label><br><input type="text">
-                <br><br><label>Password</label><br><input type="password">
+            <form method="POST" action="database/query/studentLogin.php">
+                <label>Student ID</label><br><input type="text" name="matrix">
+                <br><br><label>Password</label><br><input type="password" name="password">
                 <br><br>
                 <div class="ketengahplis">
-                    <input type="submit" value="Register">
+                    <input type="submit" value="submit" name="submit"><a href="StudentRegister.php">Sign up</a>
                 </div>            
             </form>
             <br><br>
             <div class="subtext">
-                <a href="StudentLogin.html">I already have an account</a>
+                Not a student? <a href="TutorLogin.html">Click here</a>
             </div>
         </div>
     </div>

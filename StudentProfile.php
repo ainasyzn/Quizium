@@ -1,5 +1,9 @@
-<?php include 'db_connect.php';?>
-<?php include 'StudentLogin.php';?>
+<?php include("config/db_connect.php");
+include("database/query/StudentLogin.php");
+
+
+?>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -54,27 +58,31 @@
             </div>
         </header>
     </div>
-
     <div class="content">
-        <div class="box-1">
-            <h4>Have you studied today?</h4>
-            <div class="box1-content">
-                <div class="listing">
-                    <ul>
-                        <li>Join quizzes by entering code</li>
-                        <li>Compete against classmates!</li>
-                        <li>Strengthen your thinking skills</li>
-                    </ul>
+        <div class="profilebox">
+            <form>
+                <div class="change-img">
+                    <img src="image/bear.png"><br>
+                    <a href="">change profile image</a>
                 </div>
-                <div class="sideimg">
-                    <img src="image/thumbs-up.png" style="width:250px;
-                    height: auto;">
-                </div>
-            </div>
-        </div>
-        <br><br>
-        <div class="History-lists">
-            <h4>Recent</h4>
+                <h4>User Profile</h4>
+                <?php if($result-> num_rows >0) {
+                  $i = 1;
+                  while ($row = $result-> fetch_assoc()) {
+                    ?>
+                    <table>
+                        <tr>
+                            <td><label>Student ID: </label></td>
+                            <td><input type="text" value="<?php echo $row["matrix"]?>"><br></td>
+                        </tr>
+                        <tr>
+                            <td><label>Full name: </label></td>
+                            <td><input type="text" value="<?php echo $row["studentName"]?>"></td>
+                        </tr>
+                    </table>
+                <?php }
+            } ?>
+            </form>
         </div>
     </div>
 </body>
