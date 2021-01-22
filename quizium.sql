@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2021 at 02:38 PM
+-- Generation Time: Jan 22, 2021 at 03:03 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.13
 
@@ -21,6 +21,57 @@ SET time_zone = "+00:00";
 --
 -- Database: `quizium`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `answeredquiz`
+--
+
+CREATE TABLE `answeredquiz` (
+  `answeredQuizID` int(11) NOT NULL,
+  `StudentID` int(11) NOT NULL,
+  `InstructorID` int(11) NOT NULL,
+  `quizName` varchar(255) NOT NULL,
+  `dateOpen` date NOT NULL,
+  `dateClose` date NOT NULL,
+  `grade` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `answeredquizquestion`
+--
+
+CREATE TABLE `answeredquizquestion` (
+  `answeredQuizQuestionID` int(11) NOT NULL,
+  `quizQuestion` varchar(255) NOT NULL,
+  `quizAnswer` varchar(255) NOT NULL,
+  `correctAnswer` varchar(255) NOT NULL,
+  `answeredQuizID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `instructor`
+--
+
+CREATE TABLE `instructor` (
+  `instructorID` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `instructor`
+--
+
+INSERT INTO `instructor` (`instructorID`, `name`, `username`, `password`) VALUES
+(1, 'Aiman', 'manza', '123'),
+(2, 'Aina', 'ena', '123');
 
 -- --------------------------------------------------------
 
@@ -90,9 +141,85 @@ INSERT INTO `quiz` (`quizID`, `InstructorID`, `quizName`, `dateOpen`, `dateClose
 (51, 2, 'cuba', '2021-01-22 00:00:00', '2021-01-23 00:00:00', 'try test', 'WYG-GHT-WXT'),
 (52, 2, 'Testing 123', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'amirah jawab ni', 'WYG-GHT-WXT');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quizanswer`
+--
+
+CREATE TABLE `quizanswer` (
+  `quizAnswerID` int(11) NOT NULL,
+  `answer` varchar(255) NOT NULL,
+  `quizQuestionID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `quizanswer`
+--
+
+INSERT INTO `quizanswer` (`quizAnswerID`, `answer`, `quizQuestionID`) VALUES
+(1, '3', 1),
+(2, '4', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quizquestion`
+--
+
+CREATE TABLE `quizquestion` (
+  `quizQuestionID` int(11) NOT NULL,
+  `questionName` varchar(255) NOT NULL,
+  `answer1` int(11) NOT NULL,
+  `answer2` varchar(255) NOT NULL,
+  `asnwer3` varchar(255) NOT NULL,
+  `quizID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `quizquestion`
+--
+
+INSERT INTO `quizquestion` (`quizQuestionID`, `questionName`, `answer1`, `answer2`, `asnwer3`, `quizID`) VALUES
+(1, '2 + 2 = WHAT ?', 4, '', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student`
+--
+
+CREATE TABLE `student` (
+  `studentID` int(11) NOT NULL,
+  `studentName` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `matrixNum` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `answeredquiz`
+--
+ALTER TABLE `answeredquiz`
+  ADD PRIMARY KEY (`answeredQuizID`),
+  ADD KEY `answeredquiz_ibfk_1` (`InstructorID`),
+  ADD KEY `StudentID` (`StudentID`);
+
+--
+-- Indexes for table `answeredquizquestion`
+--
+ALTER TABLE `answeredquizquestion`
+  ADD PRIMARY KEY (`answeredQuizQuestionID`),
+  ADD KEY `answeredquizquestion_ibfk_1` (`answeredQuizID`);
+
+--
+-- Indexes for table `instructor`
+--
+ALTER TABLE `instructor`
+  ADD PRIMARY KEY (`instructorID`);
 
 --
 -- Indexes for table `quiz`
@@ -102,8 +229,46 @@ ALTER TABLE `quiz`
   ADD KEY `quiz_ibfk_1` (`InstructorID`);
 
 --
+-- Indexes for table `quizanswer`
+--
+ALTER TABLE `quizanswer`
+  ADD PRIMARY KEY (`quizAnswerID`),
+  ADD KEY `quizQuestionID` (`quizQuestionID`);
+
+--
+-- Indexes for table `quizquestion`
+--
+ALTER TABLE `quizquestion`
+  ADD PRIMARY KEY (`quizQuestionID`),
+  ADD KEY `quizID` (`quizID`);
+
+--
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`studentID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `answeredquiz`
+--
+ALTER TABLE `answeredquiz`
+  MODIFY `answeredQuizID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `answeredquizquestion`
+--
+ALTER TABLE `answeredquizquestion`
+  MODIFY `answeredQuizQuestionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `instructor`
+--
+ALTER TABLE `instructor`
+  MODIFY `instructorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `quiz`
@@ -112,14 +277,57 @@ ALTER TABLE `quiz`
   MODIFY `quizID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
+-- AUTO_INCREMENT for table `quizanswer`
+--
+ALTER TABLE `quizanswer`
+  MODIFY `quizAnswerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `quizquestion`
+--
+ALTER TABLE `quizquestion`
+  MODIFY `quizQuestionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `student`
+--
+ALTER TABLE `student`
+  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `answeredquiz`
+--
+ALTER TABLE `answeredquiz`
+  ADD CONSTRAINT `answeredquiz_ibfk_1` FOREIGN KEY (`InstructorID`) REFERENCES `instructor` (`instructorID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `answeredquiz_ibfk_2` FOREIGN KEY (`StudentID`) REFERENCES `student` (`studentID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `answeredquizquestion`
+--
+ALTER TABLE `answeredquizquestion`
+  ADD CONSTRAINT `answeredquizquestion_ibfk_1` FOREIGN KEY (`answeredQuizID`) REFERENCES `answeredquiz` (`answeredQuizID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `quiz`
 --
 ALTER TABLE `quiz`
   ADD CONSTRAINT `quiz_ibfk_1` FOREIGN KEY (`InstructorID`) REFERENCES `instructor` (`instructorID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `quizanswer`
+--
+ALTER TABLE `quizanswer`
+  ADD CONSTRAINT `quizanswer_ibfk_1` FOREIGN KEY (`quizQuestionID`) REFERENCES `quizquestion` (`quizQuestionID`);
+
+--
+-- Constraints for table `quizquestion`
+--
+ALTER TABLE `quizquestion`
+  ADD CONSTRAINT `quizquestion_ibfk_1` FOREIGN KEY (`quizID`) REFERENCES `quiz` (`quizID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
