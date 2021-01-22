@@ -24,17 +24,15 @@
             $quizName = mysqli_real_escape_string($conn, $_POST['quizName']);
             $openDate = mysqli_real_escape_string($conn, date('Y-m-d', strtotime(str_replace('-','/',$_POST['openDate']))));
             $closeDate = mysqli_real_escape_string($conn, date('Y-m-d', strtotime(str_replace('-','/',$_POST['closeDate']))));
-            $quizStatus = mysqli_real_escape_string($conn, $quizStatus);
 
             $sql = "INSERT INTO quiz(instructorID,quizName,dateOpen,dateClose,quizDescription,quizCode)
-            VALUES ('$instructorID', '$quizName','$openDate','$closeDate','$quizDescription', 'quizCode')";
+            VALUES ('$instructorID', '$quizName','$openDate','$closeDate','$quizDescription', '$quizCode')";
             
 
-            if($conn->query($sql) === TRUE){
-                //tak jadi
-                $quizID = mysqli_insert_id($conn);
+            if(mysqli_query($conn, $sql)){
+                //$quizID = mysqli_insert_id($conn);
                 echo "New record created successfully. Last inserted ID is: " . $quizID; //TODO: Check balik
-                header('Location: ../../../instructor/index.php');
+                //header('Location: ../../../instructor/index.php');
             } else {
                 echo 'query error: ' . mysqli_error($conn);
             }

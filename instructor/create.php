@@ -22,7 +22,7 @@
         </div>
     </header>
    <div class="main">
-        <form class="repeater" method="POST" id="quiz_form">
+        <form class="repeater" id="quiz_form">
             <div class="quiz-details">
                 <p class="header">Create a new quiz</p>
                 <table>

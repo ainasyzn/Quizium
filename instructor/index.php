@@ -1,6 +1,5 @@
 <?php 
 include("../config/db_connect.php");
-include("../database/mutation/quiz/viewquiz.php"); 
 ?>
 
 <html>
@@ -60,7 +59,7 @@ include("../database/mutation/quiz/viewquiz.php");
         <main>
             <div class="sorting">
                 <div class="quizTot">
-                    Quiz(N)
+                    Quiz(<?php include ("../database/mutation/Quiz/countQuiz.php")?>)
                 </div>
                 <div class="sortBy">
                     <p>Sort by:</p>
@@ -73,7 +72,10 @@ include("../database/mutation/quiz/viewquiz.php");
                 </div>
             </div>
             <div class="card-container">
-            <?php if($result-> num_rows >0) {
+            <?php 
+            include("../database/mutation/quiz/viewquiz.php"); 
+            
+                  if($result-> num_rows >0) {
                   $i = 1;
                   while ($row = $result-> fetch_assoc()) {
             ?>
@@ -86,11 +88,11 @@ include("../database/mutation/quiz/viewquiz.php");
                 
                            
                 <div class="card-desc">
-                    <p><?php echo $row["descriptions"]?></p>
+                    <p><?php echo $row["quizDescription"]?></p>
                 </div>
 
                 <div class="quiz-code">
-                    <p>WJK-YKE-SOQ</p>
+                    <p><?php echo $row["quizCode"]?></p>
                 </div>
 
                 <div class="quiz-copy">

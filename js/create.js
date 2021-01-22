@@ -21,13 +21,14 @@ $(document).ready(function () {
         if(count_data > 0)
         {
             var quiz_form = $(this).serialize();
+            alert(quiz_form);
             $.ajax({
                 url: "../database/mutation/quiz/createquiz.php",
                 method: "POST",
                 data: quiz_form,
                 success:function(data)
                 {
-                    window.location = ("../instructor/index.php");
+                    //window.location = ("../instructor/index.php");
                     window.alert("Quiz created successfully!");
                 }
             })
