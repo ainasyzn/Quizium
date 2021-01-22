@@ -1,3 +1,4 @@
+<?php include("../config/db_connect.php");?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -56,7 +57,7 @@
         <main>
             <div class="sorting">
                 <div class="quizTot">
-                    Quiz(N)
+                    Quiz(<?php include ("../database/mutation/Quiz/countQuiz.php")?>)
                 </div>
                 <div class="sortBy">
                     <p>Sort by:</p>
@@ -74,24 +75,23 @@
                     <tr>
                         <th>No.</th><th>Quiz name</th><th>Start date</th><th>End date</th><th>Class average</th><th>Action</th>
                     </tr>
+                    <?php 
+                    include("../database/mutation/quiz/viewquiz.php"); 
+                    
+                        if($result-> num_rows >0) {
+                        $i = 1;
+                        while ($row = $result-> fetch_assoc()) {
+                    ?>
                     <tr>
-                        <td>1</td>
-                        <td>Database</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><a href="quiz-report.php"><button class="button btnView">View</button></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Human-Computer Interaction</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $i?></td>
+                        <td><?php echo $row["quizName"]?></td>
+                        <td><?php echo $row["dateOpen"]?></td>
+                        <td><?php echo $row["dateClose"]?></td>
+                        <td><?php echo $row["classAverage"]?></td>
                         <td><a href="quiz-report.php"><button class="button btnView">View</button></a></td>
                     </tr>
-                   
+                   <?php $i++; }
+                   }?>
                 </table>
             </div>
         </main>
