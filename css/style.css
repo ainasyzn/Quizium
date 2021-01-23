@@ -112,6 +112,11 @@ h3{
     padding-left: 55px;
 }
 
+.website-name a{
+    text-decoration: none;
+    color: #FFF;
+}
+
 .active {
     background-color: #fccf053a;
     border-left: 5px solid #FCCD05;
@@ -160,7 +165,7 @@ hr {
     right: 0;
   }
 
-  .btn1 {
+.btn1 {
     background-color: #A64AC9;
     width: 150px;
     position: fixed;
@@ -173,6 +178,20 @@ hr {
     border-radius: 37px;
     color: #FFF;
     padding: 10px;
+}
+
+.btn2 {
+    background-color: #A64AC9;
+    width: 107px;
+    padding-left: 34px;
+    padding-right: 34px;
+    font-size: 16px;
+    font-weight: 5px;
+    border-radius: 37px;
+    color: #FFF;
+    padding: 10px;
+    display: block;
+    margin: auto;
 }
 
 .btnView {

@@ -17,7 +17,7 @@
     <header>
         <div class="website-name">
             <h3>
-                <span>Quizium</span>
+                <a href="index.php"><span>Quizium</span></a>
             </h3>
         </div>
     </header>
@@ -29,7 +29,7 @@
                     <tr>
                         <td>
                           <p class="title">TITLE</p>
-                          <input type="text" name="quizName" class="quizName" placeholder="Enter a title, eg: “Mathematics Exercise 1: Algebra”" required>
+                          <input type="text" name="quizName" placeholder="Enter a title, eg: “Mathematics Exercise 1: Algebra”" required>
                         </td>
                         <td class="right">
                             <p class="title">START DATE AND TIME</p>
@@ -52,7 +52,7 @@
             <div data-repeater-list="group-a" class="cntdelegate" id="quiz-question">
                 <div data-repeater-item class="repeater-container">
                     <div class="question-box">
-                        <input type="text" id="questName" name="questName" placeholder="Add a question" required>
+                        <input type="text" id="questName" class="questName" name="questName" placeholder="Add a question" required>
                         <div class="action">
                             <select onchange="questionType(this)">
                                 <option value="" disabled selected>Select question type</option>

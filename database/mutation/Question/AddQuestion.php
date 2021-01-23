@@ -2,15 +2,14 @@
     $questionName = $correctAnswer = '';
     $errors = array('questionName'=>'','correctAnswer'=>'');
 
-    if(isset($_POST['submit'])){
-
         //questionName
-        if(empty($_POST['questionName'])){
-            $errors['questionName'] = 'An Question Name is required <br />';
+        if(empty($_POST['questName'])){
+            $errors['questName'] = 'A Question Name is required <br />';
         } else {
-            $questionName = $_POST['questionName'];
+            $questionName = $_POST['questName'];
         }
 
+        //accept both types of questions, if else
         //correctAnswer
         if(empty($_POST['correctAnswer'])) {
             $errors['correctAnswer'] = 'An Correct Answer is required <br />';
@@ -37,6 +36,5 @@
                 echo 'query error: ' . mysqli_error($conn);
             }
         }
-    } // End of POST check
 
 ?>

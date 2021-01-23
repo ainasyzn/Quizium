@@ -38,7 +38,7 @@ input[type=text] {
 
 input[type=text]:focus {
     outline: none !important;
-    border-bottom:3px solid #FFCD1F;
+    border-bottom: 3px solid #FFCD1F;
 }
 
 ::placeholder {

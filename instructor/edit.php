@@ -15,7 +15,7 @@
     <header>
         <div class="website-name">
             <h3>
-                <span>Quizium</span>
+            <a href="index.php"><span>Quizium</span></a>
             </h3>
         </div>
     </header>

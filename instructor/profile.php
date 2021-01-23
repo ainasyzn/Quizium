@@ -1,3 +1,8 @@
+<?php 
+include ("../config/db_connect.php");
+include("../database/query/instructorProfile.php");
+?>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -49,13 +54,35 @@
         <header>
             <div class="website-name">
                 <h3>
-                    <span>Quizium</span>
+                <a href="index.php"><span>Quizium</span></a>
                 </h3>
             </div>
         </header>
         <main>
             <div class="profle-container">
+                <form method="POST" action="../database/query/instructorProfileUpdate.php">
                 <img src="../image/baby-yoda.jpeg"></img>
+                <p><input type="file" name="image"></p>
+                    <div class="details">
+                    <?php 
+                    if($result-> num_rows >0) {
+                    while ($row = $result-> fetch_assoc()) {
+                    
+                    ?>
+                        <p>Name</p>
+                        <input type="text" name="name" value="<?php echo $row["name"]?>">
+                        <p>Old Password</p>
+                        <input type="password" name="oldPass">
+                        <p>New Password</p>
+                        <input type="password" name="newPass">               
+                    </div>
+
+                    <input type="submit" name="submit" value="Save" class="button btn2">
+                </form>
+
+                <?php
+                }
+            }?>
             </div>
         </main>
     </div>

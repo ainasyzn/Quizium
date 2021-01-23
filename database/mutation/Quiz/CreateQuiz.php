@@ -15,6 +15,7 @@
         $quizName = $_POST['quizName'];
         $openDate = date('Y-m-d', strtotime($_POST['openDate']));
         $closeDate = date('Y-m-d', strtotime($_POST['closeDate']));
+        $group = $_POST['group-a'];
         //radio1-3, text1-3 from create.php
 
         if(array_filter($errors)){
@@ -27,11 +28,32 @@
 
             $sql = "INSERT INTO quiz(instructorID,quizName,dateOpen,dateClose,quizDescription,quizCode)
             VALUES ('$instructorID', '$quizName','$openDate','$closeDate','$quizDescription', '$quizCode')";
-            
+
 
             if(mysqli_query($conn, $sql)){
                 $last_id = mysqli_insert_id($conn);
-                echo "New record created successfully. Last inserted ID is: " . $last_id;
+                $y = "New record created successfully. Last inserted ID is: ";
+                for($i = 0 ; $i < count($group) ; $i++){
+                    if(!empty($group[$i]['radio1'])){
+                        $questName = $group[$i]['questName'];
+                        $ans1 = $group[$i]['radio1'];
+                        $ans2 = $group[$i]['radio2'];
+                        $ans3 = $group[$i]['radio3'];
+                        $sqlQuestion = "INSERT INTO quizquestion(quizQuestionID, questionName, answer1, answer2, asnwer3, quizID) 
+                        VALUES (NULL, '$questName', '$ans1', '$ans2', '$ans3', '$last_id')";
+                        mysqli_query($conn, $sqlQuestion);    
+                    }
+                    else if(!empty($group[$i]['text1'])){
+                        $questName = $group[$i]['questName'];
+                        $ans1 = $group[$i]['text1'];
+                        $ans2 = $group[$i]['text2'];
+                        $ans3 = $group[$i]['text3'];
+                        $sqlQuestion = "INSERT INTO quizquestion(quizQuestionID, questionName, answer1, answer2, asnwer3, quizID) 
+                        VALUES (NULL, 'question 1', '$ans1', '$ans2', '$ans3', '$last_id')";
+                        mysqli_query($conn, $sqlQuestion);   
+                    }
+                }
+                echo $y . $group[0]['text1'];
             } else {
                 echo 'query error: ' . mysqli_error($conn);
             }
