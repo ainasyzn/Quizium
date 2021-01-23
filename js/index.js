@@ -23,3 +23,11 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+function copy2Clipboard(){
+  var copyText = document.getElementById("code");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
+}

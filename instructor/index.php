@@ -92,11 +92,11 @@ include("../config/db_connect.php");
                 </div>
 
                 <div class="quiz-code">
-                    <p><?php echo $row["quizCode"]?></p>
+                    <p id="code"><?php echo $row["quizCode"]?></p>
                 </div>
 
                 <div class="quiz-copy">
-                    <i class="far fa-copy"></i>
+                    <i class="far fa-copy" onClick="copy2Clipboard()"></i>
                 </div>
             </div>
             <?php }
@@ -120,7 +120,7 @@ include("../config/db_connect.php");
         </main>
     </div>
 
-    <script src="../js/modal.js"></script>
+    <script src="../js/index.js"></script>
     </body>
 
 </html>
