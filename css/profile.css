@@ -1,0 +1,21 @@
+.profle-container{
+    width: 800px;
+    height: 500px;
+    box-shadow: 0 4px 5px -2px rgb(131, 128, 128);
+    background-color: #FFF;
+    margin: auto;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.profle-container img{
+    border-radius: 50%;
+    height: 130px;
+    width: 130px;
+    display: block;
+    margin: auto;
+}
+
+.profle-container img p{
+    text-align: center;
+}

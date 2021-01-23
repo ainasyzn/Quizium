@@ -55,7 +55,7 @@
         </header>
         <main>
             <div class="profle-container">
-
+                <img src="../image/baby-yoda.jpeg"></img>
             </div>
         </main>
     </div>
