@@ -21,15 +21,15 @@ $(document).ready(function () {
         if(count_data > 0)
         {
             var quiz_form = $(this).serialize();
-            alert(quiz_form);
             $.ajax({
                 url: "../database/mutation/quiz/createquiz.php",
                 method: "POST",
                 data: quiz_form,
                 success:function(data)
                 {
-                    //window.location = ("../instructor/index.php");
-                    window.alert("Quiz created successfully!");
+                    data = data.split("New record created successfully. Last inserted ID is: ").pop();
+                    location.replace("../instructor/index.php");
+                    window.alert(data);
                 }
             })
         }

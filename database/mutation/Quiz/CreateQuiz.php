@@ -30,9 +30,8 @@
             
 
             if(mysqli_query($conn, $sql)){
-                //$quizID = mysqli_insert_id($conn);
-                echo "New record created successfully. Last inserted ID is: " . $quizID; //TODO: Check balik
-                //header('Location: ../../../instructor/index.php');
+                $last_id = mysqli_insert_id($conn);
+                echo "New record created successfully. Last inserted ID is: " . $last_id;
             } else {
                 echo 'query error: ' . mysqli_error($conn);
             }
