@@ -1,5 +1,9 @@
-<?php include 'db_connect.php';?>
-<?php include 'StudentLogin.php';?>
+<?php
+ include("./database/query/Student.php");
+ $SID = $_SESSION['studentID'];
+ $getData = "SELECT * FROM answeredquiz aq JOIN instructor i ON aq.instructorID = i.instructorID JOIN student s ON aq.studentID = s.studentID WHERE aq.studentID= '$SID' LIMIT 0,2";
+ $result = mysqli_query($conn,$getData);
+?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -22,22 +26,22 @@
             <hr>
             <ul>
                 <li class="active">
-                    <a href="">
+                    <a href="StudentHome.php">
                         <span>Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="StudentProfile.php">
                         <span>My Profile</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="StudentHistory.php">
                         <span>History</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="database/query/logout.php?action=Logout">
                         <span>Log out</span>
                     </a>
                 </li>
@@ -74,7 +78,27 @@
         </div>
         <br><br>
         <div class="History-lists">
-            <h4>Recent</h4>
+            <div class="kotak-atas">
+                <h4>Recent</h4>
+                <a href="StudentHistory">View more»</a>
+            </div>
+            
+                <?php   
+                    if($result)
+                    {
+                        foreach($result as $row)
+                        {
+                            echo "<div class='kotak-bawah'>";
+                            echo "<div class='quizname-text'>";
+                            echo $row["quizName"]."</div>";
+                            echo "<div class='flex-them'>by <div class='lect-name'>".$row["name"]."</div></div>";
+                           
+                            echo "</div>";
+                        }
+                        
+                    } 
+                ?>
+            </div>
         </div>
     </div>
 </body>

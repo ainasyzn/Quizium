@@ -1,3 +1,6 @@
+<?php
+ include("./database/query/Student.php");
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,12 +26,13 @@
             <div class="subtext">
                 sign in to continue
             </div>
-            <form method="POST" action="database/query/studentLogin.php">
+            <form method="POST" action="">
+                <?php include('database/query/errors.php'); ?>
                 <label>Student ID</label><br><input type="text" name="matrix">
                 <br><br><label>Password</label><br><input type="password" name="password">
                 <br><br>
                 <div class="ketengahplis">
-                    <input type="submit" value="submit" name="submit"><a href="StudentRegister.php">Sign up</a>
+                    <input type="submit" value="Login" name="Login"><a href="StudentRegister.php">Sign up</a>
                 </div>            
             </form>
             <br><br>

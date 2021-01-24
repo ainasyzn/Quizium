@@ -1,7 +1,11 @@
-<?php include("config/db_connect.php");
-include("database/query/StudentLogin.php");
+<?php 
+ include("./database/query/Student.php");
 
-
+ $SID=$_SESSION["studentID"];
+ $matrix =$_SESSION["matrix"];
+ 
+ $getData = "SELECT * FROM student WHERE studentID = '$SID'";
+ $result = mysqli_query($conn,$getData);
 ?>
 
 <html>
@@ -25,23 +29,23 @@ include("database/query/StudentLogin.php");
         <div class="sidebar-menu">
             <hr>
             <ul>
-                <li class="active">
-                    <a href="">
+                <li>
+                    <a href="StudentHome.php">
                         <span>Home</span>
                     </a>
                 </li>
-                <li>
-                    <a href="">
+                <li class="active">
+                    <a href="StudentProfile.php">
                         <span>My Profile</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="StudentHistory.php">
                         <span>History</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="database/query/logout.php?action=Logout">
                         <span>Log out</span>
                     </a>
                 </li>
@@ -60,28 +64,38 @@ include("database/query/StudentLogin.php");
     </div>
     <div class="content">
         <div class="profilebox">
-            <form>
+            <form method=GET>
                 <div class="change-img">
                     <img src="image/bear.png"><br>
-                    <a href="">change profile image</a>
                 </div>
                 <h4>User Profile</h4>
-                <?php if($result-> num_rows >0) {
-                  $i = 1;
-                  while ($row = $result-> fetch_assoc()) {
-                    ?>
-                    <table>
+                <table class="student">
                         <tr>
-                            <td><label>Student ID: </label></td>
-                            <td><input type="text" value="<?php echo $row["matrix"]?>"><br></td>
+                            <td><label>Quizium ID </label></td>
+                            <td><label>: </label></td>
+                            <td><input type="text" disabled value="<?php echo $SID?>"><br></td>
                         </tr>
                         <tr>
-                            <td><label>Full name: </label></td>
-                            <td><input type="text" value="<?php echo $row["studentName"]?>"></td>
+                            <td><label>Matrix number </label></td>
+                            <td><label>:</label></td>
+                            <td><input type="text"  disabled value="<?php echo $matrix?>"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Full name </label></td>
+                            <td><label>:</label></td>
+                            <td><input type="text" disabled value=
+                                "<?php 
+                                    if($result)
+                                    {
+                                        foreach($result as $row)
+                                        {
+                                            echo $row["studentName"];
+                                        }
+                                    }
+                                ?>">
+                            </td>
                         </tr>
                     </table>
-                <?php }
-            } ?>
             </form>
         </div>
     </div>

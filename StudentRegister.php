@@ -1,6 +1,6 @@
 <?php
 // Include config file
-include("./database/query/studentLogin.php");
+include("./database/query/Student.php");
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +29,13 @@ include("./database/query/studentLogin.php");
                 let the fun begin
             </div>
             <form action="" method="post">
-                <label>Student ID</label><br><input type="text">
-                <br><br><label>Password</label><br><input type="password" name="password">
+                <?php include('database/query/errors.php'); ?>
+                <label>Matrix number</label><br><input type="text" name="matrix">
+                <br><br><label>Full Name</label><br><input type="text" name="studentName">
+                <br><br><label>Password</label><br><input type="password" name="spassword">
                 <br><br>
                 <div class="ketengahplis">
-                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <input type="submit" class="btn btn-primary"  name="Register" value="Register">
                 </div>            
             </form>
             <br><br>
