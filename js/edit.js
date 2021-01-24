@@ -43,7 +43,7 @@ $(document).ready(function () {
         // start with an empty list of repeaters. Set your first (and only)
         // "data-repeater-item" with style="display:none;" and pass the
         // following configuration flag
-        initEmpty: true,
+        initEmpty: false,
         // (Optional)
         // "defaultValues" sets the values of added items.  The keys of
         // defaultValues refer to the value of the input's name attribute.

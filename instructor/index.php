@@ -83,7 +83,7 @@ include("../config/db_connect.php");
                 <div class="quiz-name">
                     <p><?php echo $row["quizName"]?></p>
                     <a href="../database/mutation/quiz/deletequiz.php?id=<?php echo $row["quizID"]; ?>" class="left"><i class="fas fa-trash-alt" onClick="return confirm('Are you sure to remove this quiz?')" aria-hidden="true"></i></a>
-                    <div class="left-left"><a href="edit.php"><i class="fas fa-edit"></i></a></div>
+                    <div class="left-left"><a href="edit.php?id=<?php echo $row["quizID"]; ?>"><i class="fas fa-edit"></i></a></div>
                 </div>
                 
                            

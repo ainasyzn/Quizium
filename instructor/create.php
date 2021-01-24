@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery.repeater@1.2.1/jquery.repeater.min.js"></script>
 </head>
 
-<body">
+<body>
     <header>
         <div class="website-name">
             <h3>
@@ -63,11 +63,11 @@
                     <hr>
                     <div class="mcq answer-container">
                         Enter answer choices and select the correct answer:<br>
-                        a. &nbsp; <input type="radio" name="ansrad">
+                        a. &nbsp; <input type="radio" name="ansrad" value="1">
                                     <input type="text" name="radio1" id="radio1" placeholder="Enter answer"><br>
-                        b. &nbsp; <input type="radio" name="ansrad">
+                        b. &nbsp; <input type="radio" name="ansrad" value="2">
                                     <input type="text" name="radio2" id="radio2" placeholder="Enter answer"><br>
-                        c. &nbsp; <input type="radio" name="ansrad">
+                        c. &nbsp; <input type="radio" name="ansrad" value="3">
                                     <input type="text" name="radio3" id="radio3" placeholder="Enter answer">
                     </div>
                     <div class="text answer-container">

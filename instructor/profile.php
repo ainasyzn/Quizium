@@ -61,8 +61,10 @@ include("../database/query/instructorProfile.php");
         <main>
             <div class="profle-container">
                 <form method="POST" action="../database/query/instructorProfileUpdate.php">
+
                 <img src="../image/baby-yoda.jpeg"></img>
-                <p><input type="file" name="image"></p>
+                <p><input type="file" name="image" id="image"></p>
+
                     <div class="details">
                     <?php 
                     if($result-> num_rows >0) {
@@ -77,7 +79,7 @@ include("../database/query/instructorProfile.php");
                         <input type="password" name="newPass">               
                     </div>
 
-                    <input type="submit" name="submit" value="Save" class="button btn2">
+                    <input type="submit" name="update" value="Save" id="update" class="button btn2">
                 </form>
 
                 <?php
@@ -86,5 +88,23 @@ include("../database/query/instructorProfile.php");
             </div>
         </main>
     </div>
+
+    <script>
+    $(document).ready(function(){
+        $('#update').click(function(){
+            var image_name = $('#image').val();
+            if(!image_name == '')
+            {
+                var extension = $('#image').val().split('.').pop().toLowerCase();
+                if(jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1)
+                {
+                    alert('Please insert image of file type .gif/.png/.jpg or .jpeg only!');
+                    $('#image').val('');
+                    return false;
+                }
+            }
+        })
+    })
+    </script>
 </body>
 </html>

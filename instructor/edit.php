@@ -1,3 +1,7 @@
+<?php 
+include ("../config/db_connect.php");
+include ("../database/mutation/quiz/viewquizbyid.php");
+?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -15,69 +19,106 @@
     <header>
         <div class="website-name">
             <h3>
-            <a href="index.php"><span>Quizium</span></a>
+                <a href="index.php"><span>Quizium</span></a>
             </h3>
         </div>
     </header>
    <div class="main">
-        <form class="repeater">
-            <div class="quiz-details">
-                <p class="header">Create a new quiz</p>
-            
-                <input type="text" name="title" placeholder="Enter a title, eg: “Mathematics Exercise 1: Algebra”">
-                <p class="title">TITLE</p>
-            
-                <input type="text" name="description" placeholder="Add a description...">
-                <p class="title">DESCRIPTION</p>
-            </div>
+        <form class="repeater" id="quiz_form">
+        <div class="quiz-details">
+                <p class="header">Update Quiz</p>
+                <table>
 
-            <div data-repeater-list="group-a" class="cntdelegate">
-                <div data-repeater-item class="repeater-container">
-                    <div class="question-box">
-                        <input type="text" id="questName" name="questName" placeholder="Add a question" onFocus="if(this.value=='questName'){this.select()};" onClick="if(this.value=='questName'){this.select()};">
-                        <div class="action">
-                            <select onchange="questionType(this)">
-                                <option value="mcq" disabled selected>Select question type</option>
-                                <option value="mcq">Multiple choice</option>
-                                <option value="check">Checkbox</option>
-                            </select>
+                 <?php 
+                    if($result-> num_rows >0) {
+                    $i = 1;
+                    while ($row = $result-> fetch_assoc()) {
+                 ?>
+                    <tr>
+                        <td>
+                          <p class="title">TITLE</p>
+                          <input type="text" name="quizName" value="<?php echo $row["quizName"]?>">
+                        </td>
+                        <td class="right">
+                            <p class="title">START DATE AND TIME</p>
+                            <input type="datetime-local" name="openDate" value="<?php echo $row["dateOpen"]?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                           <p class="title">DESCRIPTION</p>
+                           <input type="text" name="description" value="<?php echo $row["quizDescription"]?>">
+                        </td>
+                        <td class="right">
+                            <p class="title">END DATE AND TIME</p>
+                             <input type="datetime-local" name="closeDate" value="<?php echo $row["dateClose"]?>">
+                        </td>
+                    </tr>
+                    <?php }
+                   } ?>
+                </table>
+        </div>
+        <?php    
+                include ("../database/mutation/quiz/viewquizquestionbyid.php");
+                if($result-> num_rows >0) {
+                    $i = 1;
+                        while ($row = $result-> fetch_assoc()) {
+            ?>
+
+            <div data-repeater-list="group-a" class="cntdelegate" id="quiz-question">
+                    <div data-repeater-item class="repeater-container">
+                        <div class="question-box">
+                            <input type="text" id="questName" class="questName" name="questName" placeholder="Add a question" value="<?php echo $row["questionName"]?>">
+                            <div class="action">
+                                <select onchange="questionType(this)">
+                                    <option value="" disabled selected>Select question type</option>
+                                    <option value="mcq">Multiple choice</option>
+                                    <option value="text">Simple text</option>
+                                </select>
+                            </div>
+                        <hr>
+                        <?php
+                        if($row["questionType"] == "radio") {
+                        ?>
+                        <div class="mcq answer-container">
+                            Enter answer choices and select the correct answer:<br>
+                            a. &nbsp; <input type="radio" name="ansrad" value="1">
+                                        <input type="text" name="radio1" id="radio1" value="<?php echo $row["answer1"]?>"><br>
+                            b. &nbsp; <input type="radio" name="ansrad" value="2">
+                                        <input type="text" name="radio2" id="radio2" value="<?php echo $row["answer2"]?>"><br>
+                            c. &nbsp; <input type="radio" name="ansrad" value="3">
+                                        <input type="text" name="radio3" id="radio3" value="<?php echo $row["asnwer3"]?>">
                         </div>
-                    <hr>
-                    <div class="mcq answer-container">
-                        a. &nbsp; <input type="radio" name="ansrad">
-                                    <input type="text" name="radio1[]" placeholder="Enter answer"><br>
-                        b. &nbsp; <input type="radio" name="ansrad">
-                                    <input type="text" name="radio2[]" placeholder="Enter answer"><br>
-                        c. &nbsp; <input type="radio" name="ansrad">
-                                    <input type="text" name="radio3[]" placeholder="Enter answer">
+                        <?php } 
+                        else if($row["questionType"] == "text")?>
+                        <div class="text answer-container">
+                            Enter 3 possible correct(only) answers:<br>
+                            1. &nbsp;<input type="text" name="text1" id="text1" value="<?php echo $row["answer1"]?>"><br>
+                            2. &nbsp;<input type="text" name="text2" id="text2" value="<?php echo $row["answer2"]?>"><br>
+                            3. &nbsp;<input type="text" name="text3" id="text3" value="<?php echo $row["asnwer3"]?>">
+                        </div>
+                        <?php } ?>
                     </div>
-                    <div class="check answer-container">
-                        a. &nbsp; <input type="checkbox" name="ansrad">
-                                    <input type="text" name="check1[]" placeholder="Enter answer"><br>
-                        b. &nbsp; <input type="checkbox" name="ansrad">
-                                    <input type="text" name="check2[]" placeholder="Enter answer"><br>
-                        c. &nbsp; <input type="checkbox" name="ansrad">
-                                    <input type="text" name="check3[]" placeholder="Enter answer">
-                    </div>
+                    
+                    <!-- tukar jadi delete question by id-->
+                    <a data-repeater-delete>Remove </a>
+                    <div class="clear"></div>
                 </div>
-               
-                <!-- <a href="javascript:;" onClick="this.parentNode.parentNode.removeChild(this.parentNode);">Remove</a> -->
-                <a data-repeater-delete >Remove </a>
 
-                <div class="clear"></div>
-            </div>
+            <?php }
+            ?>
         
             <span id="writeroot"></span>
-            <button  type="submit" class="button btn1" name="submit" id="submit" value="submit" alt="Send" title="Send"><span>Create</span></button>
+            <button  type="submit" class="button btn1" id="submit" name="submit"><span>Update</span></button>
             <div class="clear"></div>
         </form>
-                
-        <div class="add-question">
-            <p data-repeater-create>+ Add Question</p>
-        </div>
 
+        <div class="icon-bar" data-repeater-create>
+        <p>+</p>
+        </div>
     </div>
+    
     <script src="../js/modal.js"></script>
-    <script src="../js/create.js"></script>  
+    <script src="../js/edit.js"></script>  
 </body>
 </html>
