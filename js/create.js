@@ -20,7 +20,8 @@ $(document).ready(function () {
         });
         if(count_data > 0)
         {
-            var quiz_form = $(this).serialize();       
+            var quiz_form = $(this).serialize();  
+            alert(quiz_form);     
             $.ajax({
                 url: "../database/mutation/quiz/createquiz.php",
                 method: "POST",

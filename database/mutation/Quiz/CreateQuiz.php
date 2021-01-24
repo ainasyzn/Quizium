@@ -49,7 +49,7 @@
                         $ans2 = $group[$i]['text2'];
                         $ans3 = $group[$i]['text3'];
                         $sqlQuestion = "INSERT INTO quizquestion(quizQuestionID, questionName, answer1, answer2, asnwer3, quizID) 
-                        VALUES (NULL, 'question 1', '$ans1', '$ans2', '$ans3', '$last_id')";
+                        VALUES (NULL, '$questName', '$ans1', '$ans2', '$ans3', '$last_id')";
                         mysqli_query($conn, $sqlQuestion);   
                     }
                 }
