@@ -40,7 +40,7 @@ include("../config/db_connect.php");
                     </a>
                 </li>
                 <li>
-                    <a href="../database/query/logoutInstructor.php?action=Logout">
+                    <a href="">
                         <span>Log out</span>
                     </a>
                 </li>

@@ -1,5 +1,5 @@
 <?php
- include("../config/db_connect.php");
+ include ("../config/db_connect.php");
  include("../database/query/Student.php");
  $SID = $_SESSION['studentID'];
  $getData = "SELECT * FROM answeredquiz aq 
@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../database/query/logout.php?action=Logout">
+                    <a href="database/query/logout.php?action=Logout">
                         <span>Log out</span>
                     </a>
                 </li>

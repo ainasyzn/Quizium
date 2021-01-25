@@ -11,7 +11,10 @@ include ("../../config/db_connect.php");
             while ($row = $result-> fetch_assoc()) {
                 if($row['quizCode'] == $code)
                 {
-                    header("Location: ../../student/quiz-description.php?quizCode=$code");
+                    if($row['dateOpen'] ){
+                        header("Location: ../../student/quiz-description.php?quizCode=$code");
+                    }
+                    
                 }
             }
         }
