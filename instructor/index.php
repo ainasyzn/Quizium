@@ -84,7 +84,11 @@ include("../database/query/instructorProfile.php");
             <div class="card-container">
             <?php 
             include("../database/mutation/quiz/viewquiz.php"); 
+            // $mql = "SELECT answeredquiz.*, student.* 
+            // FROM answeredquiz INNER JOIN student ON answeredquiz.StudentID = student.studentID 
+            // WHERE answeredquiz.quizID = 142";
             
+            if($result != null){
                   if($result-> num_rows >0) {
                   $i = 1;
                   while ($row = $result-> fetch_assoc()) {
@@ -110,7 +114,7 @@ include("../database/query/instructorProfile.php");
                 </div>
             </div>
             <?php }
-            } ?>
+            } }?>
             </div>
            <a href="create.php"><button class="button btn1"><span>Create</span></button></a>
 

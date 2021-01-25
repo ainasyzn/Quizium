@@ -89,7 +89,7 @@ include("../database/query/instructorProfile.php");
                     </tr>
                     <?php 
                     include("../database/mutation/quiz/viewquiz.php"); 
-                    
+                    if($result != null){
                         if($result-> num_rows >0) {
                         $i = 1;
                         while ($row = $result-> fetch_assoc()) {
@@ -103,7 +103,7 @@ include("../database/query/instructorProfile.php");
                         <td><a href="quiz-report.php"><button class="button btnView">View</button></a></td>
                     </tr>
                    <?php $i++; }
-                   }?>
+                   } }?>
                 </table>
             </div>
         </main>
