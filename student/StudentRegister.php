@@ -1,5 +1,4 @@
 <?php
-include("../config/db_connect.php");
 // Include config file
 include("../database/query/Student.php");
 ?>
