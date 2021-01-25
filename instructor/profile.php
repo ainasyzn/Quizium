@@ -60,17 +60,21 @@ include("../database/query/instructorProfile.php");
         </header>
         <main>
             <div class="profle-container">
-                <form method="POST" action="../database/query/instructorProfileUpdate.php">
-
-                <img src="../image/baby-yoda.jpeg"></img>
-                <p><input type="file" name="image" id="image"></p>
+                <form method="POST" action="../database/query/instructorProfileUpdate.php" enctype="multipart/form-data">
+                    <?php 
+                        if($result-> num_rows >0) {
+                        while ($row = $result-> fetch_assoc()) {
+                            if(!empty($row["imgName"])){
+                                $imageURL = '../imgInstructor/'.$row["imgName"];
+                            } else {
+                                $imageURL = "../image/baby-yoda.jpeg";
+                            }
+                    ?>
+                    <img src="<?php echo $imageURL; ?>"></img>
+                    <p><input type="file" name="file" id="file"></p>
 
                     <div class="details">
-                    <?php 
-                    if($result-> num_rows >0) {
-                    while ($row = $result-> fetch_assoc()) {
                     
-                    ?>
                         <p>Name</p>
                         <input type="text" name="name" value="<?php echo $row["name"]?>">
                         <p>Old Password</p>
