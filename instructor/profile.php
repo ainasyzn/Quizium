@@ -17,12 +17,24 @@ include("../database/query/instructorProfile.php");
 
 <body>
     <div class="sidebar">
+        <?php 
+            if($result-> num_rows >0) {
+                while ($row = $result-> fetch_assoc()) {
+                    if(!empty($row["imgName"])){
+                        $imageURL = '../imgInstructor/'.$row["imgName"];
+                    } else {
+                        $imageURL = "../image/fox.jpeg";
+                    }
+        ?>
         <div class="sidebar-user">
-            <img src="../image/fox.png">
+            <img src="$imageURL">
             <div class="user-image">
                 <p>Instructor</p>
             </div>
         </div>
+        <?php
+                }
+            }?>
         <div class="sidebar-menu">
             <hr>
             <ul>
