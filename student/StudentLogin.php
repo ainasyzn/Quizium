@@ -1,5 +1,5 @@
 <?php
- include("./database/query/Student.php");
+ include("../database/query/Student.php");
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/SignUpIn.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/SignUpIn.css">
 </head>
 <body>
     <header>
@@ -27,8 +27,8 @@
                 sign in to continue
             </div>
             <form method="POST" action="">
-                <?php include('database/query/errors.php'); ?>
-                <label>Student ID</label><br><input type="text" name="matrix">
+                <?php include('../database/query/errors.php'); ?>
+                <label>Matrix Number</label><br><input type="text" name="matrix">
                 <br><br><label>Password</label><br><input type="password" name="password">
                 <br><br>
                 <div class="ketengahplis">
@@ -37,7 +37,7 @@
             </form>
             <br><br>
             <div class="subtext">
-                Not a student? <a href="TutorLogin.html">Click here</a>
+                Not a student? <a href="../instructor/TutorLogin.html">Click here</a>
             </div>
         </div>
     </div>

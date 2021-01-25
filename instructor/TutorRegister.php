@@ -1,6 +1,6 @@
 <?php
 
-include("./database/query/Tutor.php");
+include("../database/query/Tutor.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,8 +8,8 @@ include("./database/query/Tutor.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/SignUpIn.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/SignUpIn.css">
 </head>
 <body>
     <header>
@@ -28,7 +28,7 @@ include("./database/query/Tutor.php");
                 let the fun begin
             </div>
             <form method="post">
-                <?php include('database/query/errors.php'); ?>
+                <?php include('../database/query/errors.php'); ?>
                 <label>Full name</label><br><input type="text" name="name"><br><br>
                 <label>Username</label><br><input type="text" name="username">
                 <br><br><label>Password</label><br><input type="password">

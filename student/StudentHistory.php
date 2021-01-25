@@ -1,6 +1,6 @@
 <?php
- include("./database/query/Student.php");
-
+ include ("../config/db_connect.php");
+ include("../database/query/Student.php");
  $SID = $_SESSION['studentID'];
  $getData = "SELECT * FROM answeredquiz aq JOIN instructor i ON aq.instructorID = i.instructorID JOIN student s ON aq.studentID = s.studentID WHERE aq.studentID= '$SID'";
  $result = mysqli_query($conn,$getData);
@@ -12,15 +12,15 @@
     <title>Dashboard</title>
     <!--icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
     <div class="sidebar">
         <div class="sidebar-user">
-            <img src="image/bear.png">
+            <img src="../image/bear.png">
             <div class="user-image">
-                <p>Instructor</p>
+                <p>Student</p>
             </div>
         </div>
         <div class="sidebar-menu">
@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="database/query/logout.php?action=Logout">
+                    <a href="../database/query/logout.php?action=Logout">
                         <span>Log out</span>
                     </a>
                 </li>

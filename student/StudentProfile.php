@@ -1,5 +1,6 @@
 <?php 
- include("./database/query/Student.php");
+ include ("../config/db_connect.php");
+ include("../database/query/Student.php");
 
  $SID=$_SESSION["studentID"];
  $matrix =$_SESSION["matrix"];
@@ -14,14 +15,14 @@
     <title>Home</title>
     <!--icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/studenthome.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/studenthome.css">
 </head>
 
 <body>
     <div class="sidebar">
         <div class="sidebar-user">
-            <img src="image/bear.png">
+            <img src="../image/bear.png">
             <div class="user-image">
                 <p>Student</p>
             </div>
@@ -66,7 +67,7 @@
         <div class="profilebox">
             <form method=GET>
                 <div class="change-img">
-                    <img src="image/bear.png"><br>
+                    <img src="../image/bear.png"><br>
                 </div>
                 <h4>User Profile</h4>
                 <table class="student">

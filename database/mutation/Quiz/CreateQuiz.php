@@ -1,64 +1,87 @@
 <?php
+    include("../../../config/db_connect.php");
     session_start();
-    $quizName = $openDate = $closeDate = $quizStatus = '';
-    $errors = array('quizName'=>'','openDate'=>'','closeDate'=>'','quizStatus'=>'');
+    $quizName = $openDate = $closeDate = $quizCode = $quizDescription = '';
+    $errors = array('quizName'=>'','openDate'=>'',
+    'closeDate'=>'','quizCode'=>'','quizDescription'=>'');
 
-    if(isset($_POST['submit'])){
+    //the idea is, once quiz dah create, guna the id to insert quizquestions in this same file
+
         //instructorID
-        $instructorID = $_SESSION['instructorID'];
+        $instructorID = 2;
+        //quizCode dummy
+        $quizCode = generateKey();
+        $quizDescription = $_POST['description'];
+        $quizName = $_POST['quizName'];
+        $openDate = date('Y-m-d H:i:s', strtotime($_POST['openDate']));  
+        $closeDate = date('Y-m-d H:i:s', strtotime($_POST['closeDate']));
+        $group = $_POST['group-a'];
 
-        //quizName
-        if(empty($_POST['quizName'])){
-            $errors['quizName'] = 'An Quiz Name is required <br />';
-        } else {
-            $quizName = $_POST['quizName'];
-        }
-
-        //open date
-        if(empty($_POST['openDate'])){
-            $errors['openDate'] = 'An Open Date is required <br />';
-        } else {
-            $openDate = date('Y-m-d', strtotime($_POST['openDate']));
-        }
-
-        //close date
-        if(empty($_POST['closeDate'])){
-            $errors['closeDate'] = 'An Close Date is required <br />';
-        } else {
-            $closeDate = date('Y-m-d', strtotime($_POST['closeDate']));
-        }
-
-        //quizStatus
-        if(empty($_POST['quizStatus'])){
-            $errors['quizStatus'] = 'An Quiz Status is required <br />';
-        } else {
-            if($_POST['quizStatus'] == "open"){
-                $quizStatus = 0;
-            } else {
-                $quizStatus = 1;
-            }
-        }
 
         if(array_filter($errors)){
 
         } else {
-            $instructorID = mysqli_real_escape_string($conn, $_SESSION['instructorID']);
+            $instructorID = mysqli_real_escape_string($conn, '2');
             $quizName = mysqli_real_escape_string($conn, $_POST['quizName']);
-            $openDate = mysqli_real_escape_string($conn, date('Y-m-d', strtotime(str_replace('-','/',$_POST['openDate']))));
-            $closeDate = mysqli_real_escape_string($conn, date('Y-m-d', strtotime(str_replace('-','/',$_POST['closeDate']))));
-            $quizStatus = mysqli_real_escape_string($conn, $quizStatus);
+            $openDate = mysqli_real_escape_string($conn, date('Y-m-d H:i:s', strtotime(str_replace('-','/',$_POST['openDate']))));
+            $closeDate = mysqli_real_escape_string($conn, date('Y-m-d H:i:s', strtotime(str_replace('-','/',$_POST['closeDate']))));
 
-            $sql = "INSERT INTO quiz(instructorID,quizName,openDate,closeDate,quizStatus)
-            VALUES ('$instructorID', '$quizName','$openDate','$closeDate','$quizStatus')";
+            $sql = "INSERT INTO quiz(instructorID,quizName,dateOpen,dateClose,quizDescription,quizCode)
+            VALUES ('$instructorID', '$quizName','$openDate','$closeDate','$quizDescription', '$quizCode')";
+
 
             if(mysqli_query($conn, $sql)){
-                $quizID = mysqli_insert_id($conn);
-                echo "New record created successfully. Last inserted ID is: " . $quizID; //TODO: Check balik
-                header('Location: index.php');
+                $last_id = mysqli_insert_id($conn);
+                $y = "New record created successfully. Last inserted ID is: ";
+                for($i = 0 ; $i < count($group) ; $i++){
+                    if(!empty($group[$i]['radio1'])){
+
+                        $ansrad = $group[$i]['ansrad'];
+                        if($ansrad == "1"){
+                            $ansrad = $group[$i]['radio1'];
+                        } else if($ansrad == "2"){
+                            $ansrad = $group[$i]['radio2'];
+                        } else if($ansrad == "3"){
+                            $ansrad = $group[$i]['radio3'];
+                        } else {
+                            $ansrad = "0";
+                        }
+
+                        $questName = $group[$i]['questName'];
+                        $ans1 = $group[$i]['radio1'];
+                        $ans2 = $group[$i]['radio2'];
+                        $ans3 = $group[$i]['radio3'];
+                        $sqlQuestion = "INSERT INTO quizquestion(quizQuestionID, questionName, answer1, answer2, asnwer3, quizID, correctAnswer, questionType) 
+                        VALUES (NULL, '$questName', '$ans1', '$ans2', '$ans3', '$last_id', '$ansrad', 'radio')";
+                        mysqli_query($conn, $sqlQuestion);    
+                    }
+                    else if(!empty($group[$i]['text1'])){
+                        $questName = $group[$i]['questName'];
+                        $ans1 = $group[$i]['text1'];
+                        $ans2 = $group[$i]['text2'];
+                        $ans3 = $group[$i]['text3'];
+                        $sqlQuestion = "INSERT INTO quizquestion(quizQuestionID, questionName, answer1, answer2, asnwer3, quizID, correctAnswer, questionType) 
+                        VALUES (NULL, '$questName', '$ans1', '$ans2', '$ans3', '$last_id', '', 'text')";
+                        mysqli_query($conn, $sqlQuestion);   
+                    }
+                }
+                echo $y . $group[0]['text1'];
             } else {
                 echo 'query error: ' . mysqli_error($conn);
             }
         }
-    } // End of POST check
+    // End of POST check
 
+    //generate code
+    function generateKey(){
+        $keyLength = 3;
+
+        $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        $randStr1 = substr(str_shuffle($str), 0, $keyLength);
+        $randStr2 = substr(str_shuffle($str), 0, $keyLength);
+        $randStr3 = substr(str_shuffle($str), 0, $keyLength);
+        $combineStr = $randStr1 . "-" . $randStr2 . "-" . $randStr3;
+        return $combineStr;
+    }
 ?>

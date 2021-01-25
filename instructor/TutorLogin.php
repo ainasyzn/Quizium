@@ -1,6 +1,6 @@
 <?php
 
-include("./database/query/Tutor.php");
+include("../database/query/Tutor.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,8 +8,8 @@ include("./database/query/Tutor.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/SignUpIn.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/SignUpIn.css">
 </head>
 <body>
     <header>
@@ -28,7 +28,7 @@ include("./database/query/Tutor.php");
                 sign in to continue
             </div>
             <form method="post">
-                <?php include('database/query/errors.php'); ?>
+                <?php include('../database/query/errors.php'); ?>
                 <label>Username</label><br><input type="text" name="username">
                 <br><br><label>Password</label><br><input type="password" name="password">
                 <br><br>
@@ -38,7 +38,7 @@ include("./database/query/Tutor.php");
             </form>
             <br><br>
             <div class="subtext">
-                Not a tutor? <a href="StudentLogin.php">Click here</a>
+                Not a tutor? <a href="../student/StudentLogin.php">Click here</a>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <?php
 // Include config file
-include("./database/query/Student.php");
+include("../database/query/Student.php");
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +9,8 @@ include("./database/query/Student.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/SignUpIn.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/SignUpIn.css">
 </head>
 <body>
     <header>
@@ -29,7 +29,7 @@ include("./database/query/Student.php");
                 let the fun begin
             </div>
             <form action="" method="post">
-                <?php include('database/query/errors.php'); ?>
+                <?php include('../database/query/errors.php'); ?>
                 <label>Matrix number</label><br><input type="text" name="matrix">
                 <br><br><label>Full Name</label><br><input type="text" name="studentName">
                 <br><br><label>Password</label><br><input type="password" name="spassword">
