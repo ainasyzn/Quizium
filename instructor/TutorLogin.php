@@ -1,3 +1,7 @@
+<?php
+
+include("./database/query/Tutor.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,17 +27,18 @@
             <div class="subtext">
                 sign in to continue
             </div>
-            <form>
-                <label>Username</label><br><input type="text">
-                <br><br><label>Password</label><br><input type="password">
+            <form method="post">
+                <?php include('database/query/errors.php'); ?>
+                <label>Username</label><br><input type="text" name="username">
+                <br><br><label>Password</label><br><input type="password" name="password">
                 <br><br>
                 <div class="ketengahplis">
-                    <input type="submit" value="Login"><a href="TutorRegister.html">Sign up</a>
+                    <input type="submit" value="Login" name="Login"><a href="TutorRegister.php">Sign up</a>
                 </div>            
             </form>
             <br><br>
             <div class="subtext">
-                Not a tutor? <a href="StudentLogin.html">Click here</a>
+                Not a tutor? <a href="StudentLogin.php">Click here</a>
             </div>
         </div>
     </div>
