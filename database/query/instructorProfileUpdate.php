@@ -32,7 +32,11 @@ if(isset($_POST["update"])){
                 }
         } else {
                 $fileNameNew = "";
-                echo "Only images allowed!";
+                echo ("<SCRIPT LANGUAGE='JavaScript'>
+                window.alert('You cannot upload files of this type! Sorry, please try again!')
+                window.location.href='profile.php'
+                </SCRIPT>");
+                exit();
         }
         $sql = "UPDATE `instructor`
         SET name = '$name', password = '$newPass', imgName = '$fileNameNew'
