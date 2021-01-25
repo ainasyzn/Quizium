@@ -1,7 +1,4 @@
-<?php 
-include("../config/db_connect.php");
-include("../database/query/instructorProfile.php");
-?>
+<?php include("../config/db_connect.php");?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -17,16 +14,7 @@ include("../database/query/instructorProfile.php");
 <body>
     <div class="sidebar">
         <div class="sidebar-user">
-        <?php 
-            $imageURL1 = "";
-            $row1 = $result-> fetch_assoc();
-            if(!empty($row1["imgName"])){
-                $imageURL1 = '../imgInstructor/'.$row1["imgName"];
-            } else {
-                $imageURL1 = "../image/fox.png";
-            }
-        ?>
-            <img src="<?php echo $imageURL1;?>">
+            <img src="../image/fox.png">
             <div class="user-image">
                 <p>Instructor</p>
             </div>
@@ -85,11 +73,11 @@ include("../database/query/instructorProfile.php");
             <div class="quiz-list">
                 <table>
                     <tr>
-                        <th>No.</th><th>Quiz name</th><th>Start date</th><th>End date</th><th>Class average</th><th>Action</th>
+                        <th>No.</th><th>Quiz name</th><th>Start date</th><th>End date</th><th>Action</th>
                     </tr>
                     <?php 
                     include("../database/mutation/quiz/viewquiz.php"); 
-                    if($result != null){
+                    
                         if($result-> num_rows >0) {
                         $i = 1;
                         while ($row = $result-> fetch_assoc()) {
@@ -99,11 +87,11 @@ include("../database/query/instructorProfile.php");
                         <td><?php echo $row["quizName"]?></td>
                         <td><?php echo $row["dateOpen"]?></td>
                         <td><?php echo $row["dateClose"]?></td>
-                        <td><?php echo $row["classAverage"]?></td>
-                        <td><a href="quiz-report.php"><button class="button btnView">View</button></a></td>
+                        <td><a href="quiz-report.php?quizID=<?php echo $row['quizID']?>"><button class="button btnView">View</button></a></td>
                     </tr>
                    <?php $i++; }
-                   } }?>
+                   }?>
+
                 </table>
             </div>
         </main>
