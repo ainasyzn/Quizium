@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2021 at 08:42 AM
+-- Generation Time: Jan 25, 2021 at 10:29 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.13
 
@@ -31,12 +31,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `answeredquiz` (
   `answeredQuizID` int(11) NOT NULL,
   `StudentID` int(11) NOT NULL,
-  `InstructorID` int(11) NOT NULL,
-  `quizName` varchar(255) NOT NULL,
-  `dateOpen` date NOT NULL,
-  `dateClose` date NOT NULL,
-  `grade` int(11) NOT NULL
+  `mark` int(11) NOT NULL,
+  `quizID` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `answeredquiz`
+--
+
+INSERT INTO `answeredquiz` (`answeredQuizID`, `StudentID`, `mark`, `quizID`) VALUES
+(3, 1, 2, 142),
+(6, 1, 2, 142),
+(7, 1, 3, 142);
 
 -- --------------------------------------------------------
 
@@ -98,11 +104,9 @@ CREATE TABLE `quiz` (
 
 INSERT INTO `quiz` (`quizID`, `InstructorID`, `quizName`, `dateOpen`, `dateClose`, `quizDescription`, `quizCode`, `classAverage`) VALUES
 (1, 1, 'ITS571', '2020-12-01 00:00:00', '2020-12-02 00:00:00', '1', '0', 0),
-(62, 2, 'Testing 123', '2021-01-23 00:00:00', '2021-01-23 00:00:00', '624', 'WYG-GHT-WXT', 0),
 (63, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', '625', 'WYG-GHT-WXT', 0),
 (64, 2, 'Test', '2021-01-23 00:00:00', '2021-01-23 00:00:00', '627', 'WYG-GHT-WXT', 0),
 (65, 2, 'Testing 123', '2021-01-23 00:00:00', '2021-01-24 00:00:00', '629', 'WYG-GHT-WXT', 0),
-(66, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', '632', 'WYG-GHT-WXT', 0),
 (67, 2, 'Testing', '2021-01-23 00:00:00', '2021-01-24 00:00:00', '634', 'WYG-GHT-WXT', 0),
 (68, 2, 'Test', '2021-01-24 00:00:00', '2021-01-25 00:00:00', '636', 'WYG-GHT-WXT', 0),
 (69, 2, 'Test 123', '2021-01-23 00:00:00', '2021-01-23 00:00:00', '637', 'WYG-GHT-WXT', 0),
@@ -150,30 +154,14 @@ INSERT INTO `quiz` (`quizID`, `InstructorID`, `quizName`, `dateOpen`, `dateClose
 (112, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
 (113, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
 (114, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
-(115, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
-(116, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
-(117, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
-(118, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
-(119, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
-(120, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
-(121, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
-(122, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
-(123, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
-(124, 2, 'cuba', '2021-01-23 00:00:00', '2021-01-23 00:00:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
-(125, 2, 'cuba', '2021-01-23 22:04:00', '2021-01-23 22:04:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
-(126, 2, 'cuba', '2021-01-23 22:04:00', '2021-01-23 22:04:00', 'Apakah ini bisa terjadi?', 'WYG-GHT-WXT', 0),
-(127, 2, 'testing date', '2021-01-23 22:20:00', '2021-01-23 22:20:00', '123', 'WYG-GHT-WXT', 0),
-(128, 2, 'Testing 123', '2021-01-23 22:39:00', '2021-01-23 22:39:00', 'Apakah ini bisa terjadi?', '0', 0),
-(129, 2, 'Testing 123', '2021-01-23 22:39:00', '2021-01-23 22:39:00', 'Apakah ini bisa terjadi?', '0', 0),
-(130, 2, 'Testing 123', '2021-01-23 22:39:00', '2021-01-23 22:39:00', 'Apakah ini bisa terjadi?', '0', 0),
-(131, 2, 'Testing 123', '2021-01-23 22:39:00', '2021-01-23 22:39:00', 'Apakah ini bisa terjadi?', '0', 0),
-(132, 2, 'Testing 123', '2021-01-23 22:39:00', '2021-01-23 22:39:00', 'Apakah ini bisa terjadi?', 'UMN', 0),
-(133, 2, 'Testing 123', '2021-01-23 22:39:00', '2021-01-23 22:39:00', 'Apakah ini bisa terjadi?', '0', 0),
-(134, 2, 'Testing 123', '2021-01-23 22:39:00', '2021-01-23 22:39:00', 'Apakah ini bisa terjadi?', '0', 0),
-(135, 2, 'Testing 123', '2021-01-23 22:39:00', '2021-01-23 22:39:00', 'Apakah ini bisa terjadi?', '0', 0),
 (136, 2, 'Testing 123', '2021-01-23 22:39:00', '2021-01-23 22:39:00', 'Apakah ini bisa terjadi?', 'KCG-NOM-SUW', 0),
 (137, 2, 'Testing 123', '2021-01-23 22:39:00', '2021-01-23 22:39:00', 'Apakah ini bisa terjadi?', 'RQU-BUA-XQF', 0),
-(138, 2, 'test code', '2021-01-23 22:45:00', '2021-01-22 22:45:00', '123', 'KHA-YBJ-ING', 0);
+(138, 2, 'test code', '2021-01-23 22:45:00', '2021-01-22 22:45:00', '123', 'KHA-YBJ-ING', 0),
+(139, 2, 'cuba', '2021-01-24 21:38:00', '2021-01-25 21:38:00', 'Apakah ini bisa terjadi?', 'JBL-KEA-VAQ', 0),
+(140, 2, 'Test: DB', '2021-01-24 22:41:00', '2021-01-25 22:41:00', 'Apakah ini bisa terjadi?', 'BPE-QLV-JCZ', 0),
+(141, 2, 'cuba try test', '2021-01-24 22:51:00', '2021-01-25 22:52:00', '1051', 'WZQ-CAL-UBX', 0),
+(142, 2, 'text', '2021-01-24 22:54:00', '2021-01-24 22:54:00', '123', 'SDH-HFM-OET', 0),
+(144, 2, 'Testing 123', '2021-01-25 00:37:00', '2021-01-26 00:37:00', 'Apakah ini bisa terjadi?', 'YLP-IHT-GCU', 0);
 
 -- --------------------------------------------------------
 
@@ -273,29 +261,15 @@ INSERT INTO `quizquestion` (`quizQuestionID`, `questionName`, `answer1`, `answer
 (56, 'q1', '1', '23', '3', 112, '1', ''),
 (57, 'q1', '1', '23', '3', 113, '1', ''),
 (58, 'q1', '1', '23', '3', 114, '1', ''),
-(59, 'q1', '1', '23', '3', 115, '1', ''),
-(60, 'q1', '1', '23', '3', 116, '1', ''),
-(61, 'q1', '1', '23', '3', 117, '1', ''),
-(62, 'q1', '1', '23', '3', 118, '1', ''),
-(63, '1', '2', '3', '1', 120, '2', ''),
-(64, '1', '2', '3', '1', 121, '2', ''),
-(65, '1', '2', '3', '1', 122, '2', ''),
-(66, '1', '2', '3', '1', 123, '2', ''),
-(67, '1', '2', '3', '1', 124, '2', ''),
-(68, 'test1', '1', '2', '3', 125, '1', ''),
-(69, 'test1', '1', '2', '3', 126, '1', ''),
-(70, 'test1', '1', '2', '3', 127, '1', ''),
-(71, 'q1', '1', '2', '3', 128, '1', ''),
-(72, 'q1', '1', '2', '3', 129, '1', ''),
-(73, 'q1', '1', '2', '3', 130, '1', ''),
-(74, 'q1', '1', '2', '3', 131, '1', ''),
-(75, 'q1', '1', '2', '3', 132, '1', ''),
-(76, 'q1', '1', '2', '3', 133, '1', ''),
-(77, 'q1', '1', '2', '3', 134, '1', ''),
-(78, 'q1', '1', '2', '3', 135, '1', ''),
 (79, 'q1', '1', '2', '3', 136, '1', ''),
 (80, 'q1', '1', '2', '3', 137, '1', ''),
-(81, 'test code', '1', '2', '3', 138, '1', 'text');
+(81, 'test code', '1', '2', '3', 138, '1', 'text'),
+(82, 'What is visibility?', 'ans1', 'asn 2', 'ans 3', 139, 'ans1', 'radio'),
+(83, 'santui', 'test', 'test2', 'test3', 141, 'test', 'radio'),
+(84, 'Capital of south korea', 'Seoul', 'busan', 'itaewon', 141, 'Seoul', 'radio'),
+(85, 'q1', 'ans1', 'ans2', 'asn 3', 142, '', 'text'),
+(86, 'q2', 'London', 'Ireland', 'Birmingham', 142, '', 'text'),
+(87, 'q3', 'Seoul', 'busan', 'itaewon', 142, 'Seoul', 'radio');
 
 -- --------------------------------------------------------
 
@@ -311,6 +285,13 @@ CREATE TABLE `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`studentID`, `studentName`, `password`, `matrixNum`) VALUES
+(1, 'Amelia', '123', 12345);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -319,8 +300,8 @@ CREATE TABLE `student` (
 --
 ALTER TABLE `answeredquiz`
   ADD PRIMARY KEY (`answeredQuizID`),
-  ADD KEY `answeredquiz_ibfk_1` (`InstructorID`),
-  ADD KEY `StudentID` (`StudentID`);
+  ADD KEY `StudentID` (`StudentID`),
+  ADD KEY `quizID` (`quizID`);
 
 --
 -- Indexes for table `answeredquizquestion`
@@ -370,7 +351,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `answeredquiz`
 --
 ALTER TABLE `answeredquiz`
-  MODIFY `answeredQuizID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `answeredQuizID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `answeredquizquestion`
@@ -388,7 +369,7 @@ ALTER TABLE `instructor`
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quizID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `quizID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT for table `quizanswer`
@@ -400,13 +381,13 @@ ALTER TABLE `quizanswer`
 -- AUTO_INCREMENT for table `quizquestion`
 --
 ALTER TABLE `quizquestion`
-  MODIFY `quizQuestionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `quizQuestionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -416,8 +397,8 @@ ALTER TABLE `student`
 -- Constraints for table `answeredquiz`
 --
 ALTER TABLE `answeredquiz`
-  ADD CONSTRAINT `answeredquiz_ibfk_1` FOREIGN KEY (`InstructorID`) REFERENCES `instructor` (`instructorID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `answeredquiz_ibfk_2` FOREIGN KEY (`StudentID`) REFERENCES `student` (`studentID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `answeredquiz_ibfk_2` FOREIGN KEY (`StudentID`) REFERENCES `student` (`studentID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `answeredquiz_ibfk_3` FOREIGN KEY (`quizID`) REFERENCES `quiz` (`quizID`);
 
 --
 -- Constraints for table `answeredquizquestion`
