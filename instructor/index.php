@@ -84,9 +84,6 @@ include("../database/query/instructorProfile.php");
             <div class="card-container">
             <?php 
             include("../database/mutation/quiz/viewquiz.php"); 
-            // $mql = "SELECT answeredquiz.*, student.* 
-            // FROM answeredquiz INNER JOIN student ON answeredquiz.StudentID = student.studentID 
-            // WHERE answeredquiz.quizID = 142";
             
             if($result != null){
                   if($result-> num_rows >0) {
