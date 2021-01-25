@@ -20,13 +20,17 @@
 
         if (count($errors)==0) {
             
-            $sql = "INSERT INTO instructor(name,username,password) VALUES ('$name','$username','$password')";
-            mysqli_query($conn,$sql);
-            $_SESSION['name'] = $name;
-            $_SESSION['username'] = $username;
-            $_SESSION['instructorID'] = $instructorID;
+            $sql = "INSERT INTO instructor(name,username,password,imgName,imgDir) 
+            VALUES ('$name','$username','$password','','')";
+            if(mysqli_query($conn,$sql)){
+                $_SESSION['name'] = $name;
+                $_SESSION['username'] = $username;
+                $_SESSION['instructorID'] = $instructorID;
          
-            header('location: ./TutorLogin.php');
+                header('location: ./TutorLogin.php');
+            } else {
+                header('location: ./TutorLogin.php');
+            }
         }
     }
 
