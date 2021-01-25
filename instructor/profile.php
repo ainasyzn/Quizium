@@ -1,6 +1,13 @@
 <?php 
-include ("../config/db_connect.php");
+include("../config/db_connect.php");
 include("../database/query/instructorProfile.php");
+$imageURL1 = "";
+            $row1 = $result-> fetch_assoc();
+            if(!empty($row1["imgName"])){
+                $imageURL1 = '../imgInstructor/'.$row1["imgName"];
+            } else {
+                $imageURL1 = "../image/fox.png";
+            }
 ?>
 
 <html>
@@ -17,24 +24,15 @@ include("../database/query/instructorProfile.php");
 
 <body>
     <div class="sidebar">
-        <?php 
-            if($result-> num_rows >0) {
-                while ($row = $result-> fetch_assoc()) {
-                    if(!empty($row["imgName"])){
-                        $imageURL = '../imgInstructor/'.$row["imgName"];
-                    } else {
-                        $imageURL = "../image/fox.jpeg";
-                    }
-        ?>
         <div class="sidebar-user">
-            <img src="$imageURL">
+        <?php 
+            
+        ?>
+            <img src="<?php echo $imageURL1;?>">
             <div class="user-image">
                 <p>Instructor</p>
             </div>
         </div>
-        <?php
-                }
-            }?>
         <div class="sidebar-menu">
             <hr>
             <ul>
@@ -73,22 +71,14 @@ include("../database/query/instructorProfile.php");
         <main>
             <div class="profle-container">
                 <form method="POST" action="../database/query/instructorProfileUpdate.php" enctype="multipart/form-data">
-                    <?php 
-                        if($result-> num_rows >0) {
-                        while ($row = $result-> fetch_assoc()) {
-                            if(!empty($row["imgName"])){
-                                $imageURL = '../imgInstructor/'.$row["imgName"];
-                            } else {
-                                $imageURL = "../image/baby-yoda.jpeg";
-                            }
-                    ?>
-                    <img src="<?php echo $imageURL; ?>"></img>
+                   
+                    <img src="<?php echo $imageURL1; ?>"></img>
                     <p><input type="file" name="file" id="file"></p>
 
                     <div class="details">
                     
                         <p>Name</p>
-                        <input type="text" name="name" value="<?php echo $row["name"]?>">
+                        <input type="text" name="name" value="<?php echo $row1["name"];?>">
                         <p>Old Password</p>
                         <input type="password" name="oldPass">
                         <p>New Password</p>
@@ -98,9 +88,6 @@ include("../database/query/instructorProfile.php");
                     <input type="submit" name="update" value="Save" id="update" class="button btn2">
                 </form>
 
-                <?php
-                }
-            }?>
             </div>
         </main>
     </div>
