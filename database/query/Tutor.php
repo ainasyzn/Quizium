@@ -52,7 +52,7 @@
 
             $query = "SELECT * FROM instructor
             WHERE username = '$username' AND password = '$password'";
-            $result = mysqli_query($db,$query);
+            $result = mysqli_query($conn,$query);
 
             if (mysqli_num_rows($result) == 1) {
                 $_SESSION['username'] = $username;
