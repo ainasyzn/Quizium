@@ -1,7 +1,8 @@
 <?php 
     include ("../../../config/db_connect.php");
     //start session
-    $studentid = 1;
+    session_start();
+    $studentid = $_SESSION["studentID"];
     $answer = $_POST['answer'];
     $quizid = $_POST["quizid"];
 
