@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 <?php include ("../config/db_connect.php");?>
+=======
+<?php 
+include("../config/db_connect.php");
+?>
+>>>>>>> bbf35bd0fc91ddfbfdf0afc2b737b67e644cf43d
 <html>
     <head>
         <meta charset="UTF-8">
