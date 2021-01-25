@@ -5,7 +5,7 @@
     {
       session_destroy();
       unset($_SESSION['matrix']);
-      header('location: ../../welcome.html');
+      header('location: ../../index.html');
     }
 
  ?>
