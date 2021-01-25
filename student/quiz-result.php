@@ -34,7 +34,7 @@ $result = $conn->query($sql);
             <p>QUIZ TITLE</p>
             <input type="text" value="<?php echo $row['quizName']?>">
             <p>MARK</p>
-            <input type="text" value="<?php echo $row['mark']?>%">
+            <input type="text" value="<?php echo $row['mark']?>">
             <?php }
         } ?>
         </div>
