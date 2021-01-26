@@ -11,12 +11,37 @@ include ("../../config/db_connect.php");
             while ($row = $result-> fetch_assoc()) {
                 if($row['quizCode'] == $code)
                 {
-                    header("Location: ../../student/quiz-description.php?quizCode=$code");
+                    date_default_timezone_set("Asia/Kuala_Lumpur");
+                    $current =  date('Y-m-d H:i:s'); 
+                    $curr = $current;
+                    $open = $row['dateOpen'];
+                    $close = $row['dateClose'];
+
+                    if($curr < $open){
+                        echo ("<SCRIPT LANGUAGE='JavaScript'>
+                                    window.alert('Quiz has not started yet')
+                                    window.location.href='../../student/quiz-code.php'
+                                     </SCRIPT>");
+                    }
+                    else if($curr > $close){
+                        echo ("<SCRIPT LANGUAGE='JavaScript'>
+                        window.alert('Quiz has expired')
+                        window.location.href='../../student/quiz-code.php'
+                         </SCRIPT>");
+                    }
+                    else{
+                        //dah jawab belum
+                        //$sqlcheck = "";
+                        header("Location: ../../student/quiz-description.php?quizCode=$code");
+                    }
+                    
                 }
             }
         }
         else{
-            header("Location: ../../student/quiz-code.php?validate=false");
+            if($row['quizCode'] != $code){
+                header("Location: ../../student/quiz-code.php?validate=false");
+            }          
         }
             
     $conn->close();

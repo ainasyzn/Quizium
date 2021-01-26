@@ -205,8 +205,8 @@ hr {
     border-radius: 37px;
     color: #FFF;
     padding: 6px;
-    display: block;
-    margin: auto 5px;;
+    /*display: block;
+    margin: auto 5px;*/
 }
 
 .btn4 {
@@ -220,7 +220,7 @@ hr {
     color: #FFF;
     padding: 6px;
     display: block;
-    margin: auto 5px;;
+    margin: auto 5px;
 }
 
 .btnLeave {
