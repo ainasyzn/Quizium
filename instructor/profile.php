@@ -84,7 +84,7 @@ $imageURL1 = "";
                         <p>Name</p>
                         <input type="text" name="name" value="<?php echo $row1["name"];?>">
                         <p>Password</p>
-                        <input type="password" name="oldPass" required>
+                        <input type="password" name="pass" required>
              
                     </div>
 

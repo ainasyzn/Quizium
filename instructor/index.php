@@ -78,7 +78,7 @@ include("../database/query/instructorProfile.php");
                         <option value="recent">Oldest</option>
                     </select>
                     <p>Search quiz:</p>
-                    <input type="text">
+                    <input type="text" id="myInput" onkeyup="myFunction()">
                 </div>
             </div>
             <div class="card-container">
@@ -90,7 +90,7 @@ include("../database/query/instructorProfile.php");
                   $i = 1;
                   while ($row = $result-> fetch_assoc()) {
             ?>
-            <div class="card-quiz">
+            <div class="card-quiz" id="myUL">
                 <div class="quiz-name">
                     <p><?php echo $row["quizName"]?></p>
                     <a href="../database/mutation/quiz/deletequiz.php?id=<?php echo $row["quizID"]; ?>" class="left"><i class="fas fa-trash-alt" onClick="return confirm('Are you sure to remove this quiz?')" aria-hidden="true"></i></a>
@@ -132,6 +132,7 @@ include("../database/query/instructorProfile.php");
     </div>
 
     <script src="../js/index.js"></script>
+    <script src="../js/filter.js"></script>
     </body>
 
 </html>

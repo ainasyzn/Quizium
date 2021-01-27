@@ -30,7 +30,7 @@
      <header>
         <div class="website-name">
             <h3>
-            <a href="#"><span>Quizium</span></a>
+            <a href="index.php"><span>Quizium</span></a>
             </h3>
       </div>
         </header>

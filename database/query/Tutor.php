@@ -38,7 +38,7 @@
                 //$_SESSION['studentID'] = $studentID;
                 echo ("<SCRIPT LANGUAGE='JavaScript'>
                                     window.alert('Instructor account created successfully!')
-                                    
+                                    window.location.href='./TutorLogin.php'
                                      </SCRIPT>");
             }
     }
