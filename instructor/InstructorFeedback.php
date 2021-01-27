@@ -14,7 +14,7 @@
         // send email
         mail("zaiman670@gmail.com",$title,$msg);
         
-        header('Location: ../../index.php');
+        header('Location: ../../StudentHome.php');
     }
 ?>
 <html>
@@ -30,24 +30,31 @@
      <header>
         <div class="website-name">
             <h3>
-            <a href="index.php"><span>Quizium</span></a>
+                <a href="StudentHome.php"><span>Quizium</span></a>
             </h3>
       </div>
         </header>
-        <div class="quizdetail-container">
-            <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" onsubmit="validateForm()"> 
+
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" onsubmit="validateForm()"> 
+        <div class="quizdetail-container" style="height: 400px; margin-top: 120px;">
                 <div>
+                    <h4><i class="fas fa-comments" style="color: #414141; font-size: 25px"></i> &nbsp&nbspFEEDBACK</h4>
+                    
+                    <p>Share your honest thoughts on what you love or wishes Quizium to improve on!</p>
                     <label>TITLE</label>
                     <input type="text" id="title" name="title" class="form-control" required><br>
-                </div>
+                </div><br>
                 <div>
                     <label>MESSAGE</label><br>
                     <textarea id="message" name="message" rows="4" cols="50" class="form-control" required></textarea><br>
                 </div>
                 <br>
-                <input type="submit" name="send" id="send" class="button btn3" value="Submit">
-            </form>
         </div>
+        <div style="width: 240px; display: flex; margin: auto;">  
+                    <a href="studenthome.php"><input value="Cancel" class="button btn4"></a>
+                    <input type="submit" name="send" id="send" class="button btn3" value="Submit">
+                </div>
+        </form>
         <script>
             function validateForm() {
                 alert("You Have summited an email to Quizium");

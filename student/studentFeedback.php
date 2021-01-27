@@ -50,9 +50,10 @@
                 </div>
                 <br>
         </div>
-        <div style="width: 110px; display: block; margin: auto;"> 
-            <input type="submit" name="send" id="send" class="button btn3" value="Submit">
-        </div>
+        <div style="width: 240px; display: flex; margin: auto;">  
+                    <a href="studenthome.php"><input value="Cancel" class="button btn4"></a>
+                    <input type="submit" name="send" id="send" class="button btn3" value="Submit">
+                </div>
         </form>
         <script>
             function validateForm() {

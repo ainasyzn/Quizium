@@ -38,6 +38,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="StudentFeedback.php">
+                        <span>Feedback</span>
+                    </a>
+                </li>
+                <li>
                     <a href="../database/query/logout.php?action=Logout">
                         <span>Log out</span>
                     </a>
