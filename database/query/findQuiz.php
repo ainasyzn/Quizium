@@ -48,10 +48,10 @@ include("Student.php");
                                             window.location.href='../../student/quiz-code.php'
                                         </SCRIPT>");
                                 }
-                                else{
-                                    header("Location: ../../student/quiz-description.php?quizCode=$code");
-                                }
                             }
+                        }
+                        else{
+                            header("Location: ../../student/quiz-description.php?quizCode=$code");
                         }
             
                     }
