@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2021 at 08:42 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.3.13
+-- Generation Time: Jan 28, 2021 at 12:23 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -81,19 +80,21 @@ CREATE TABLE `quiz` (
   `dateClose` datetime NOT NULL,
   `quizDescription` varchar(255) NOT NULL,
   `quizCode` varchar(255) NOT NULL,
-  `classAverage` float NOT NULL
+  `classAverage` float NOT NULL,
+  `numStudents` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `quiz`
 --
 
-INSERT INTO `quiz` (`quizID`, `InstructorID`, `quizName`, `dateOpen`, `dateClose`, `quizDescription`, `quizCode`, `classAverage`) VALUES
-(138, 2, 'Java Programming', '2021-01-19 00:00:00', '2021-01-20 11:26:00', 'Description', 'KHA-YBJ-ING', 0),
-(140, 2, 'Midterm Quiz: DB', '2021-01-26 11:23:00', '2021-01-27 11:23:00', 'Consists of 30 questions..', 'BPE-QLV-JCZ', 0),
-(142, 2, 'Quiz 1: General Knowledge', '2021-01-27 11:21:00', '2021-01-28 23:21:00', 'Description', 'SDH-HFM-OET', 0),
-(145, 2, 'Quiz 2: ITS571', '2021-01-26 14:16:00', '2021-01-27 14:16:00', 'Description', 'KUC-EGY-XGC', 0),
-(147, 2, 'quiz 2', '2021-01-26 15:32:00', '2021-01-27 15:32:00', 'Description', 'ZJM-KVQ-HEQ', 0);
+INSERT INTO `quiz` (`quizID`, `InstructorID`, `quizName`, `dateOpen`, `dateClose`, `quizDescription`, `quizCode`, `classAverage`, `numStudents`) VALUES
+(138, 2, 'Java Programming', '2021-01-19 00:00:00', '2021-01-20 11:26:00', 'Description', 'KHA-YBJ-ING', 0, 3),
+(140, 2, 'Midterm Quiz: DB', '2021-01-26 11:23:00', '2021-01-27 11:23:00', 'Consists of 30 questions..', 'BPE-QLV-JCZ', 0, 6),
+(142, 2, 'Quiz 1: General Knowledge', '2021-01-02 19:22:00', '2021-01-29 19:22:00', 'Description', 'SDH-HFM-OET', 0, 10),
+(145, 2, 'Quiz 2: ITS571', '2021-01-26 14:16:00', '2021-01-27 14:16:00', 'Description', 'KUC-EGY-XGC', 0, 7),
+(147, 2, 'quiz 2', '2021-01-26 15:32:00', '2021-01-27 15:32:00', 'Description', 'ZJM-KVQ-HEQ', 0, 10),
+(148, 1, 'quiz', '2021-01-02 18:48:00', '2021-01-11 18:48:00', 'test', 'PKO-OUJ-GHK', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -120,7 +121,8 @@ INSERT INTO `quizquestion` (`quizQuestionID`, `questionName`, `answer1`, `answer
 (81, 'test code', '1', '2', '3', 138, '1', 'text'),
 (85, 'What\'s 2+0?', '0', '2', '3', 142, '2', 'radio'),
 (86, 'What\'s the Capital of England?', 'London', 'Ireland', 'Birmingham', 142, 'London', 'radio'),
-(87, 'Name any error in computer', 'Syntax error', 'Run time error', 'Logic error', 142, 'Seoul', 'text');
+(87, 'Name any error in computer', 'Syntax error', 'Run time error', 'Logic error', 142, 'Seoul', 'text'),
+(90, 'q1', '4', 'A frontend language', 'A syntax', 148, '4', 'radio');
 
 -- --------------------------------------------------------
 
@@ -207,13 +209,13 @@ ALTER TABLE `instructor`
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quizID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `quizID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT for table `quizquestion`
 --
 ALTER TABLE `quizquestion`
-  MODIFY `quizQuestionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `quizQuestionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `student`
