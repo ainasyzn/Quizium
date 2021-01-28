@@ -14,7 +14,7 @@
         // send email
         mail("zaiman670@gmail.com",$title,$msg);
         
-        header('Location: ../../StudentHome.php');
+        header('Location: StudentHome.php');
     }
 ?>
 <html>
@@ -57,7 +57,7 @@
         </form>
         <script>
             function validateForm() {
-                alert("You Have summited an email to Quizium");
+                alert("You have summited an email to Quizium");
             }
         </script>
     </body>

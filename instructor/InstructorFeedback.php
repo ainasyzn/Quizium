@@ -14,7 +14,7 @@
         // send email
         mail("zaiman670@gmail.com",$title,$msg);
         
-        header('Location: ../../StudentHome.php');
+        header('Location: index.php');
     }
 ?>
 <html>
@@ -51,13 +51,13 @@
                 <br>
         </div>
         <div style="width: 240px; display: flex; margin: auto;">  
-                    <a href="studenthome.php"><input value="Cancel" class="button btn4"></a>
+                    <a href="index.php"><input value="Cancel" class="button btn4"></a>
                     <input type="submit" name="send" id="send" class="button btn3" value="Submit">
                 </div>
         </form>
         <script>
             function validateForm() {
-                alert("You Have summited an email to Quizium");
+                alert("You have summited an email to Quizium");
             }
         </script>
     </body>

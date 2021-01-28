@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2021 at 05:30 PM
+-- Generation Time: Jan 28, 2021 at 08:42 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.13
 
@@ -41,13 +41,8 @@ CREATE TABLE `answeredquiz` (
 
 INSERT INTO `answeredquiz` (`answeredQuizID`, `StudentID`, `mark`, `quizID`) VALUES
 (9, 3, 50, 142),
-(22, 1, 78, 142),
 (28, 6, 45, 142),
-(34, 1, 100, 138),
-(36, 1, 67, 142),
-(37, 1, 100, 142),
-(38, 1, 33, 142),
-(39, 1, 67, 142);
+(37, 1, 100, 142);
 
 -- --------------------------------------------------------
 
@@ -96,7 +91,7 @@ CREATE TABLE `quiz` (
 INSERT INTO `quiz` (`quizID`, `InstructorID`, `quizName`, `dateOpen`, `dateClose`, `quizDescription`, `quizCode`, `classAverage`) VALUES
 (138, 2, 'Java Programming', '2021-01-19 00:00:00', '2021-01-20 11:26:00', 'Description', 'KHA-YBJ-ING', 0),
 (140, 2, 'Midterm Quiz: DB', '2021-01-26 11:23:00', '2021-01-27 11:23:00', 'Consists of 30 questions..', 'BPE-QLV-JCZ', 0),
-(142, 2, 'Quiz 1: General Knowledge', '2021-01-27 11:21:00', '2021-01-28 11:21:00', 'Description', 'SDH-HFM-OET', 0),
+(142, 2, 'Quiz 1: General Knowledge', '2021-01-27 11:21:00', '2021-01-28 23:21:00', 'Description', 'SDH-HFM-OET', 0),
 (145, 2, 'Quiz 2: ITS571', '2021-01-26 14:16:00', '2021-01-27 14:16:00', 'Description', 'KUC-EGY-XGC', 0),
 (147, 2, 'quiz 2', '2021-01-26 15:32:00', '2021-01-27 15:32:00', 'Description', 'ZJM-KVQ-HEQ', 0);
 
